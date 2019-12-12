@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()" >
+        <ion-icon name="arrow-back"  ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Fogot password</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+
+    <form [formGroup]="validations_form"  >
+
+
+    <ion-card>
+        <ion-grid>
+          <ion-row>
+          <ion-col size="12">
+           
+            <ion-item>
+              <ion-label  position="floating" >Email</ion-label>
+              <ion-input formControlName="email"  ></ion-input>
+              
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+             
+          </ion-col>
+    
+          <ion-col>
+           
+        <ion-item padding-bottom>
+          <ion-label  position="floating" >Date of Birth</ion-label>
+          <ion-input type="password" formControlName="dob"  ></ion-input>
+          
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.dob">
+          <div class="error-message" *ngIf="validations_form.get('dob').hasError(validation.type) && (validations_form.get('dob').dirty || validations_form.get('dob').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+          </ion-col>
+    
+        </ion-row>
+        
+    </ion-grid>
+      </ion-card>
+      <div text-center >
+
+
+          <ion-col >
+      <div>
+              <ion-button  color="primary"  (click)="login(validations_form)"  [disabled]="!validations_form.valid" shape="round">Forgot password</ion-button>
+      </div>
+            </ion-col>
+          <ion-col >
+            <div padding-top>
+              <b class="psw" [routerLink]="['/login']">Login </b>
+            </div>
+          </ion-col>
+         </div>
+
+         </form>
+</ion-content>

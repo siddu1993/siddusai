@@ -1,0 +1,243 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lab Test update</ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" >
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+
+  
+   
+            <div *ngFor="let form_elem of test_res; let i=index" >
+       <ion-card>
+          {{i}}
+         <ion-item>
+            <small  slot="start"><ion-label>{{form_elem.name}}</ion-label></small>
+            <small  slot="end"><ion-input  [(ngModel)]="sname[i]"    type="text"  placeholder="{{form_elem.name}}"></ion-input></small>
+         </ion-item>
+         <ion-item>
+            <small slot="start"> <ion-label >Units</ion-label></small>
+
+          <small>   <select    [(ngModel)]="unit[i]" >
+              <option *ngFor="let obj of read"  placeholder="units"  value="{{obj.unit}}">{{obj.unit }}</option>
+            </select></small>
+            </ion-item>
+
+             <ion-item>
+                <small slot="start"> <ion-label >Method</ion-label></small>
+    
+              <small>   <select    [(ngModel)]="method[i]" >
+                  <option *ngFor="let obj of read" placeholder="units"  value="{{obj.method}}">{{obj.method }}</option>
+                </select></small>
+                </ion-item> 
+
+                
+             <ion-item>
+              <small slot="start"> <ion-label  class="fon">Bio ref Range  {{form_elem.range}}</ion-label></small>
+  
+         
+              </ion-item> 
+            </ion-card>
+           </div>
+
+      
+         <small *ngIf="sts!=1"> <ion-button size="small"  (click)="sub()" >Save</ion-button></small>
+         <small *ngIf="sts==1"> <ion-button size="small"  (click)="sub()" >Update</ion-button></small>
+
+
+     
+      
+
+
+
+    
+    <!-- <div  *ngFor="let obj of test_res; let i = index;" [formGroupName]="i">
+      <label>{{obj.name}}</label>
+      <input formControlName="name" placeholder='obj.name'>
+      <input formControlName="description" placeholder="messurement">
+    <input formControlName="price" placeholder="{{Item.price}}"> 
+    </div>
+   -->
+
+
+
+
+
+    <!-- <form [formGroup]="labupdateForm">
+    <ion-item>
+       <small slot="start"> <ion-label>Ref Dr Name:</ion-label></small>
+        <ion-input  formControlName='docter_name' placeholder="doctor name"></ion-input>
+      </ion-item>
+
+
+    <ion-item>
+        <small slot="start">  <ion-label>Test Name:</ion-label></small>
+  <ion-select slot="end" formControlName="test_name" 
+  placeholder="test name">
+  <ion-select-option >Blood test</ion-select-option>
+
+  <ion-select-option >Sugar</ion-select-option>
+  <ion-select-option >Dengu</ion-select-option>
+  <ion-select-option >Thiroud</ion-select-option>
+
+  <ion-select-option >Malaria</ion-select-option>
+ 
+  </ion-select>
+    </ion-item>
+
+  <ion-item>
+      <small slot="start">  <ion-label>Select patient:</ion-label></small>
+
+    <ion-select slot="end" formControlName ="child_name">
+        <ion-select-option  value="">{{name}}</ion-select-option>
+        <ion-select-option *ngFor="let obj of alllist"  value="{{obj.name}}">{{obj.name }}</ion-select-option>
+      </ion-select></ion-item>
+
+<div>
+    <h6 padding>Test Results</h6>
+</div>
+
+<ion-card>
+
+    <ion-grid>
+           
+         
+           
+       
+        <ion-row>
+            <ion-col size="6">
+         
+                <ion-item>
+                  <ion-label  position="floating" ><small>Total Cholestrol</small></ion-label>
+                  <ion-input  type="number" formControlName="total_cholestrol"  ></ion-input>
+                  
+                </ion-item>
+                <ng-container *ngFor="let validation of validation_messages.total_cholestrol">
+                    <div class="error-message" *ngIf="labupdateForm.get('total_cholestrol').hasError(validation.type) && (labupdateForm.get('total_cholestrol').dirty || labupdateForm.get('total_cholestrol').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                    </div>
+                  </ng-container>
+                  </ion-col>
+        
+              <ion-col>
+              </ion-col>  
+        </ion-row> 
+        <ion-row>   
+        <ion-col size="6">
+         
+          <ion-item>
+            <ion-label  position="floating" ><small>Triglycerides</small></ion-label>
+            <ion-input  type="number" formControlName="tri_glycerides"  ></ion-input>
+            
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.tri_glycerides">
+              <div class="error-message" *ngIf="labupdateForm.get('tri_glycerides').hasError(validation.type) && (labupdateForm.get('tri_glycerides').dirty || labupdateForm.get('tri_glycerides').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+            </ion-col>
+  
+        <ion-col>
+         
+      <ion-item >
+        <ion-label  position="floating" ><small>HDL</small></ion-label>
+        <ion-input type="number" formControlName="hdl"  ></ion-input>
+        
+      </ion-item>
+      <ng-container *ngFor="let validation of validation_messages.hdl">
+          <div class="error-message" *ngIf="labupdateForm.get('hdl').hasError(validation.type) && (labupdateForm.get('hdl').dirty || labupdateForm.get('hdl').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+        </ion-col>
+  
+      </ion-row>
+      
+
+        <ion-row>
+            <ion-col size="6">
+             
+              <ion-item>
+                <ion-label  position="floating" ><small>No hdl</small></ion-label>
+                <ion-input  type="number" formControlName="no_hdl" ></ion-input>
+                
+              </ion-item>
+              <ng-container *ngFor="let validation of validation_messages.no_hdl">
+                  <div class="error-message" *ngIf="labupdateForm.get('no_hdl').hasError(validation.type) && (labupdateForm.get('no_hdl').dirty || labupdateForm.get('no_hdl').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                  </div>
+                </ng-container>
+                </ion-col>
+                <ion-col size="6">
+             
+                  <ion-item >
+                    <ion-label  position="floating" ><small>LDL</small></ion-label>
+                    <ion-input  type="number"  formControlName="ldl"  ></ion-input>
+                    
+                  </ion-item>
+                  <ng-container *ngFor="let validation of validation_messages.ldl">
+                      <div class="error-message" *ngIf="labupdateForm.get('ldl').hasError(validation.type) && (labupdateForm.get('ldl').dirty || labupdateForm.get('ldl').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                      </div>
+                    </ng-container>
+      
+      
+                    </ion-col>
+        </ion-row>
+        <ion-row>
+                    <ion-col size="6">
+                 
+             
+                      <ion-item>
+                        <ion-label position="floating" ><small>Vldl</small></ion-label>
+                        <ion-input   type="number" formControlName="vldl" ></ion-input>
+                        
+                      </ion-item>
+    
+                      <ng-container *ngFor="let validation of validation_messages.vldl">
+                          <div class="error-message" *ngIf="labupdateForm.get('vldl').hasError(validation.type) && (labupdateForm.get('vldl').dirty || labupdateForm.get('vldl').touched)">
+                            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </ion-col>
+      
+         
+          
+        
+              <ion-col>
+               
+            <ion-item >
+              <ion-label position="floating" ><small>CHOL/HDL ratio</small></ion-label>
+              <ion-input  type="number"  formControlName="chol_ratio"  ></ion-input>
+              
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.chol_ratio">
+                <div class="error-message" *ngIf="labupdateForm.get('chol_ratio').hasError(validation.type) && (labupdateForm.get('chol_ratio').dirty || labupdateForm.get('chol_ratio').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+              </ng-container>
+              </ion-col>
+        
+            </ion-row>
+  
+              <div text-center>
+                  <ion-button (click)="update(labupdateForm)"  fill="outline" shape="round"><small>Save</small></ion-button>
+                 
+                          
+                </div>   
+            
+      
+  </ion-grid>
+</ion-card>
+</form> -->
+
+</ion-content>

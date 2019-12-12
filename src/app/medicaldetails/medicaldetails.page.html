@@ -1,0 +1,184 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" class="menu">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+    <ion-title>Medical Details</ion-title>
+    <ion-icon padding-left slot="end" (click)="add()" name="add-circle"></ion-icon>
+  </ion-toolbar>
+
+ 
+
+</ion-header>
+
+<ion-content>
+    <div text-center>
+         
+        <ion-img text-center (click)="hosvisit()" [src]="userimg" class="center"></ion-img>
+  
+     </div>
+
+  <ion-list >
+  
+      <ion-card>
+         
+      <ion-item lines="none">
+        <h6 slot="start">Patient id</h6>
+        <h6 slot="end">{{userData.patient_id}}</h6>
+      </ion-item>
+    
+      <ion-item  lines="none">
+        <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+        <h6 slot="start">Name</h6>
+        <h6 slot="end">{{ userData.full_name}}</h6>
+      </ion-item>
+      <ion-item lines="none">
+        <h6 slot="start">Gender</h6>
+        <h6 slot="end"> {{userData.sex}}</h6>
+      </ion-item>
+
+      <ion-item lines="none">
+        <h6 slot="start">Age</h6>
+        <h6 slot="end">{{userData.age}}</h6>
+      </ion-item>
+
+      <ion-item  lines="none">
+        <h6 slot="start">Date of Birth</h6>
+        <h6 slot="end">{{userData.date_of_birth  | date:'dd-MM-yyyy'}} </h6>
+      </ion-item>
+      <ion-item lines="none" >
+        <h6 slot="start">Email id</h6>
+        <h6 slot="end">{{ userData.email}}</h6>
+      </ion-item>
+      <!-- <ion-item class="activated">
+        <h6 slot="start">Address</h6>
+        <h6 slot="end">{{userData. address}} </h6>
+      </ion-item>
+      <ion-item  lines="none">
+        <h6 slot="start">City</h6>
+        <h6 slot="end">{{ userData.city}}</h6>
+      </ion-item>
+      <ion-item class="activated">
+        <h6 slot="start">State</h6>
+        <h6 slot="end"> {{ userData.state}}</h6>
+      </ion-item>
+      <ion-item  lines="none">
+        <h6 slot="start" >Insurance</h6>
+        <h6 slot="end">{{userData.insurance}}</h6>
+      </ion-item>
+      <ion-item class="activated">
+        <h6 slot="start">Phone No</h6>
+        <h6 slot="end"> {{userData.phone_no}}</h6>
+      </ion-item> -->
+      <ion-item lines="none">
+
+
+          <ion-text (click)="view()" slot="start" color="primary">
+              <h6><u>View</u></h6>
+            </ion-text>
+         
+       
+      </ion-item>
+      </ion-card>
+
+    <div class="container" >
+      <h6 style="color: #ffffff;"><b>Medical History</b></h6>
+
+<div class="scroll" scrollX="true">
+      <ion-grid>
+        <ion-row>
+            <ion-col size="4">
+                <div class="container" text-center>
+                
+                    <ion-img (click)="docvisit()" [src]="doctr"></ion-img>
+                    <small>   <p class="hos">Doctor visits</p></small>
+                    </div>
+      <!-- <button class="btn" (click)="docvisit()"><i class="fa fa-home"></i> Doctors Visits</button> -->
+    
+      </ion-col>
+      <ion-col size="4">
+
+          <div class="container" text-center>
+                
+              <ion-img (click)="labvisits()" [src]="labvisit"></ion-img>
+              <small>  <p class="hos">Lab visits</p></small>
+              </div>
+     
+      </ion-col>
+    
+      <ion-col size="4">
+          <div class="container" text-center>
+                
+              <ion-img (click)="hosvisit()" [src]="hosv"></ion-img>
+              <small> <p class="hos">Hospital visits</p></small>
+              </div>
+     
+    
+</ion-col>
+      </ion-row>
+      </ion-grid>
+<!-- 
+
+      <h5  (click)="docvisit()"><u><ul>Doctors Visits</ul></u></h5>
+      <h5  (click)="labvisits()"><u><ul>Lab Visits</ul></u></h5>
+      <h5  (click)="hosvisit()"><u><ul>Hospital Visits</ul></u></h5> -->
+      </div>
+     </div>
+
+
+    
+
+
+    <div class="container">
+        <h6 style="color: #ffffff;"><b>Patients Ratings</b></h6>
+
+      <div class="scroll" scrollX="true">
+
+
+        <ion-grid>
+          <ion-row>
+              <ion-col size="4">
+                  <div class="container" text-center>
+                  
+                      <ion-img (click)="docrate()" [src]="src"></ion-img>
+                      <small><p class="hos">Doctors</p></small>
+                      </div>
+        <!-- <button class="btn" (click)="docvisit()"><i class="fa fa-home"></i> Doctors Visits</button> -->
+      
+        </ion-col>
+        <ion-col size="4">
+  
+            <div class="container" text-center>
+                  
+                <ion-img (click)="lab()" [src]="src"></ion-img>
+                <small><p class="hos">Lab</p></small>
+                </div>
+       
+        </ion-col>
+      
+        <ion-col size="4">
+            <div class="container" text-center>
+                  
+                <ion-img (click)="hos()" [src]="src"></ion-img>
+                <small><p class="hos">Hospital</p></small>
+                </div>
+       
+      
+  </ion-col>
+        </ion-row>
+        </ion-grid>
+  <!-- 
+  
+        <h5  (click)="docvisit()"><u><ul>Doctors Visits</ul></u></h5>
+        <h5  (click)="labvisits()"><u><ul>Lab Visits</ul></u></h5>
+        <h5  (click)="hosvisit()"><u><ul>Hospital Visits</ul></u></h5> -->
+       </div>
+</div>
+
+ 
+</ion-list>
+
+
+
+
+</ion-content>

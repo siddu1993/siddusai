@@ -1,0 +1,49 @@
+
+
+<ion-toolbar>
+  <ion-title>
+    Hospital Rating
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-button (click)="back()" >
+      <ion-icon name="arrow-back"  ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+    <ion-card>
+
+    <form [formGroup]="validations_form">
+      <ion-item>
+        <small > <ion-label position="floating">Select Hospital</ion-label></small>
+
+  <ion-select  formControlName="hospital_name"
+  >
+  <ion-select-option *ngFor="let obj of hoslist">{{obj.name}}</ion-select-option>
+ 
+</ion-select>
+</ion-item>
+
+<ion-item>
+    <small > <ion-label position="floating">Rating</ion-label></small>
+
+<ion-select  formControlName="rating" 
+placeholder="Rating">
+<ion-select-option value="1">1</ion-select-option>
+<ion-select-option value="2">2</ion-select-option>
+<ion-select-option value="3">3</ion-select-option>
+<ion-select-option value="4">4</ion-select-option>
+<ion-select-option value="5">5</ion-select-option>
+</ion-select>
+</ion-item>
+<ion-item>
+    <small > <ion-label position="floating">Comments</ion-label></small>
+
+  <ion-textarea  formControlName="comments" placeholder="Comments"></ion-textarea>
+</ion-item>
+
+<ion-button (click)="rate(validations_form)" [disabled]="!validations_form.valid" fill="outline" shape="round"><small>Save</small></ion-button>
+
+    </form>
+    </ion-card>
+</ion-content>

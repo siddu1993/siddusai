@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button (click)="back()" >
+            <ion-icon name="arrow-back"  ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Doctors Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+    <ion-card class="cardsize">
+
+        <ion-item lines="none">
+          <h6 slot="start">Doctors id</h6>
+          <h6 slot="end">{{userData.docter_id}}  </h6>
+        </ion-item>
+      
+        <ion-item class="activated" lines="none">
+          <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+          <h6 slot="start">Name</h6>
+          <h6 slot="end">{{userData.docter_name}} </h6>
+        </ion-item>
+  
+        <ion-item lines="none">
+          <h6 slot="start">Gender</h6>
+          <h6 slot="end">{{userData.sex}}  </h6>
+        </ion-item>
+  
+        <ion-item class="activated" lines="none">
+          <h6 slot="start">Speciality</h6>
+          <h6 slot="end">{{userData.speciality}}  </h6>
+        </ion-item>
+
+        <ion-item lines="none" >
+          <h6 slot="start">Email id</h6>
+          <h6 slot="end">  {{userData.email}}</h6>
+        </ion-item>
+
+        <ion-item class="activated">
+          <h6 slot="start">Clinic Address</h6>
+          <h6 slot="end"> {{userData.clinic_address}}</h6>
+        </ion-item>
+        <ion-item  lines="none">
+          <h6 slot="start">State</h6>
+          <h6 slot="end">{{userData.state}}    </h6>
+        </ion-item>
+
+    
+
+        <ion-item class="activated">
+          <h6 slot="start" >Hospital</h6>
+          <h6 slot="end">{{userData.hospital}} </h6>
+        </ion-item>
+        <ion-item  lines="none">
+          <u><h6 slot="start" (click)="edit()">Edit</h6></u>
+        
+        </ion-item>
+      
+      </ion-card>
+      <div text-center>
+        <h6 text-center>Update Patient's Record</h6>
+      </div>
+ <ion-item>
+   <ion-label>
+     Patient's Id :
+   </ion-label>
+   <ion-input [(ngModel)]="phone_no" placeholder="phone no">
+
+   </ion-input>
+   <ion-button (click)="search()">Search</ion-button>
+ </ion-item>
+  
+</ion-content>

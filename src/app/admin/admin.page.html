@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+        <ion-card>
+    
+        
+    
+    <ion-item>
+        <small > <ion-label position="floating">Main</ion-label></small>
+    
+    
+    <ion-select  [(ngModel)]="mname" (ionChange)="change($event)">
+    <ion-select-option *ngFor="let obj of main"  value="{{obj._id}}">{{obj.name}}  </ion-select-option>
+   
+    </ion-select>
+    </ion-item>
+    <ion-item>
+     <ion-label position="floating">Sub</ion-label>
+    
+    <ion-input [(ngModel)]="name" ></ion-input>
+   
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Bio ref Range</ion-label>
+     
+     <ion-input [(ngModel)]="range" ></ion-input>
+    
+     </ion-item>
+    <ion-item>
+        <ion-label slot="start" position="floating">Show in the listing</ion-label>
+
+        <ion-checkbox slot="end" [(ngModel)]="che" (ionChange)="check($event)"></ion-checkbox>
+
+    </ion-item>
+  
+    <ion-button (click)="save()"  fill="outline" shape="round"><small>Save</small></ion-button>
+    </ion-card>
+</ion-content>

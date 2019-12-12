@@ -1,0 +1,96 @@
+<ion-header>
+
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()" >
+        <ion-icon name="arrow-back"  ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Patient's Doctors Visits</ion-title>
+  </ion-toolbar>
+ 
+
+  <ion-toolbar>
+
+      <ion-row *ngIf="doclist!=''">
+          <ion-col size="3">
+              <small>   <ion-select [(ngModel)]="searchOptions.docter_name" 
+              >
+              <ion-select-option  value=''>Doctor Name</ion-select-option>
+              <ion-select-option value='{{obj.name}}' *ngFor="let obj of doclist">{{obj.name}}</ion-select-option>
+              
+              </ion-select></small>
+            </ion-col>
+            <ion-col size="3">
+                <small> <ion-select [(ngModel)]="searchOptions.year" 
+                placeholder="eg year">
+                <ion-select-option  value=''>year</ion-select-option>
+                <ion-select-option value='{{obj.year}}' *ngFor="let obj of years">{{obj.year}}</ion-select-option>
+                
+                </ion-select></small>
+              </ion-col>
+              <ion-col size="3">
+                  <small>   <ion-select [(ngModel)]="searchOptions.child_name">
+                      <ion-select-option  value="">{{full_name}}</ion-select-option>
+                      <ion-select-option *ngFor="let obj of child"  value="{{obj.name}}">{{obj.name }}</ion-select-option>
+                    </ion-select></small>
+                  
+                </ion-col>
+                <ion-col size="3">
+               
+                      <button type="button"  (click)="searchData()" class="btn btn-primary btn-sm">Search</button>
+                   
+              
+                  </ion-col>
+
+    </ion-row>
+    <ion-row *ngIf="doclist==''">
+<div text-center><p>no data found</p></div>
+    </ion-row>
+    
+      </ion-toolbar>
+      <h6>
+     
+        <h6 slot="end">patient id :{{patient_id}}</h6>
+    </h6>
+</ion-header>
+
+<ion-content>
+  <ion-card class="cardsize" *ngFor="let item of visits.slice().reverse()">
+    
+  
+    <ion-item class="activated" lines="none">
+      <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+      <h6 slot="start">Doctor Name</h6>
+      <small slot="end">{{item.docter_name}}</small>
+    </ion-item>
+
+    <ion-item lines="none">
+      <h6 slot="start">Blood Pressure</h6>
+      <h6 slot="end">{{item.blood_pressure}}</h6>
+    </ion-item>
+
+    <ion-item class="activated" lines="none">
+      <h6 slot="start">Reason for Visit</h6>
+      <h6 slot="end">{{item.reason}}</h6>
+    </ion-item>
+    <ion-item lines="none" >
+      <h6 slot="start">Doctors Comments </h6>
+     <small slot="end"> <p slot="end">{{item.comments}}</p></small>
+    </ion-item>
+    <ion-item class="activated">
+      <h6 slot="start">Medicine Prescribed </h6>
+      <h6 slot="end">{{item.medicine_prescribed}}</h6>
+    </ion-item>
+    <ion-item  lines="none">
+      <h6 slot="start">Lab Test Recommended </h6>
+      <h6 slot="end">{{item.labtest_required}}</h6>
+    </ion-item>
+    <ion-item  class="activated">
+      <h6 slot="start">Date</h6>
+      <h6 slot="end">{{item.date  | date:'dd-MM-yyyy'}}</h6>
+    </ion-item>
+ 
+  </ion-card>
+</ion-content>

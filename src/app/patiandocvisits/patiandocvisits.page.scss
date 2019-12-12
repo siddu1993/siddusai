@@ -1,0 +1,108 @@
+// .cardsize{
+//     width: 400px;
+// }
+
+.i-button{
+    height:25px;
+    color: #ffffff !important ; 
+        opacity: 1 !important;
+       background-color: #2E8B57!important;
+}
+ion-button{
+    height:30px;   
+}
+.icon-size{
+    height: 35px;
+    width: 35px;
+    
+    color: #ffffff;
+}
+ion-select{
+    color: #ffffff;
+}
+ion-card {
+    border: 2px solid grey;
+
+ }
+.cardsize{
+    --background-color: #2E8B57!important;
+}
+
+
+    ion-input{
+       border: solid 0.2px gray;
+       border-color:#2E8B57;
+       height: 35px;
+       padding-left: 10px;
+       text-align: center;
+       border-end-end-radius: 0.2px;
+       font-size: 12px;
+       padding: 1px;
+
+    }
+    .aligs{
+        padding-left: 10px !important;
+    }
+    ion-icon{
+        color: #ffffff !important ; 
+    }
+       
+    ion-toolbar{
+        --background: #138D75!important ;
+        opacity:1!important; 
+    }
+    .hed{
+        // --background: #2E8B57 !important
+        --background: #138D75!important ;
+        opacity:1!important; 
+    }
+    ion-title{
+        color: #ffffff !important ; 
+    }
+    ion-buttons{
+        color: #ffffff !important ; 
+        opacity: 1 !important;
+        --background: #138D75!important ;
+    }
+   
+  
+    ion-menu-button{
+        color: #ffffff !important ;
+    }
+    ion-input{
+        border: 1px solid greenyellow;
+        color: #ffffff;
+        border-radius: 17px;
+    }
+   
+    
+    // ion-select{
+    //     // --placeholder-color: #e6d4d4;
+    //     --placeholder-opacity: 1;
+    //     --placeholder-color: #ffffff 
+    // }
+
+    // ion-select {
+    //     border:  1px solid greenyellow;
+    //     color:white;
+    //     opacity: 1 !important;
+    //     border-radius: 17px;
+       
+    // }
+    .selector{
+        width: 100px;
+        height: 40px;
+        border: 1px solid greenyellow;
+        padding: 10px;
+        margin-right: 30px;
+        outline-color:#A7D5E4;
+        color:white;
+        opacity:1;
+    }
+    // ion-text{
+    //   color:#138D75!important ;  
+    // }
+
+
+
+  

@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Patient Medical History</ion-title>
+    <ion-buttons slot="start">
+        <ion-button (click)="back()" >
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+  
+
+  
+  
+    <ion-toolbar>
+   
+            <ion-label>Patient ID: {{patient_id}}</ion-label>
+            <!-- <ion-label>Name: {{full_name}}</ion-label> -->
+           
+      
+            <ion-row>
+              <ion-col size="4">
+                <small>   <ion-select [(ngModel)]="searchOptions.child_name" placeholder="name">
+                  <ion-select-option  value="">{{full_name}}</ion-select-option>
+                  <ion-select-option *ngFor="let obj of userData"  value="{{obj.name}}">{{obj.name }}</ion-select-option>
+                </ion-select></small>
+              </ion-col>
+              <ion-col size="4">
+                
+                <small>   <ion-select  [(ngModel)]="searchOptions.year">
+                  <ion-select-option  value="">Select Year</ion-select-option>
+                  <ion-select-option *ngFor="let obj of years"  value="{{obj.year}}">{{obj.year }}</ion-select-option>
+                </ion-select></small>
+          
+                </ion-col>
+        
+                <ion-col size="4">
+                   
+                  <ion-button (click)="search()" size="small">search</ion-button>
+                  
+                    
+                      </ion-col>
+            </ion-row>
+  
+  
+      </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <div  text-center>
+          <u><h6   text-center>Doctors Visits</h6></u>
+        </div>
+      <ion-card   class="cardsize" *ngFor="let item of visits">
+       
+          <ion-item class="activated" lines="none">
+            <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+            <h6 slot="start">Visit Date</h6>
+            <h6 slot="end">{{item.date  | date:'yyyy-MM-dd'}}</h6>
+            
+  
+          </ion-item>
+  
+          <ion-item lines="none">
+            <h6 slot="start">Doctors Name</h6>
+            <h6 slot="end">{{item.docter_name}}</h6>
+          </ion-item>
+          <ion-item  class="activated" lines="none">
+              <h6 slot="start">Blood Pressure</h6>
+              <h6 slot="end">{{item.blood_pressure}}</h6>
+            </ion-item>
+        
+              <ion-item lines="none">
+                <h6 slot="start">Doctor's Commants</h6>
+                <h6 slot="end">{{item.comments}}</h6>
+              </ion-item>
+              <ion-item class="activated" lines="none">
+                  <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+                  <h6 slot="start">MedicinePrescibed</h6>
+                  <h6 slot="end">{{item.medicine_prescribed}}</h6>
+                </ion-item>
+        
+                <ion-item lines="none">
+                  <h6 slot="start">Lab Test Recommended</h6>
+                  <h6 slot="end">{{item.labtest_required}}</h6>
+                </ion-item>
+                <ion-item lines="activated">
+                  <h6 slot="start">Lab Test Name</h6>
+                  <div slot="end">
+                    <small *ngFor="let obj of item.test_name"> <p>{{obj.name}}</p></small>
+                 </div>                
+                </ion-item>
+                
+
+                <ion-item class="activated" lines="none">
+                    <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+                    <h6 slot="start">Reason for Visit</h6>
+                    <h6 slot="end">{{item.reason}}</h6>
+                  </ion-item>
+                  <ion-item lines="none">
+                      <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+                      <h6 slot="start">Report Status</h6>
+                      <h6 slot="end" *ngIf="item.status=='1'">Completed</h6>
+                      <h6 slot="end" *ngIf="item.status!='1'">Not Completed</h6>
+                      <h6 slot="end" *ngIf="item.status!='1' && item.docter_id ==docter_id" (click)="editdc(item)"><u>Edit</u></h6>
+                    </ion-item>
+          
+         
+       
+        </ion-card>
+  
+        <div  text-center>
+          <u><h6  text-center>Lab Visits</h6></u>
+        </div>
+  
+       
+  
+      <ion-card *ngFor="let item of lablist">
+           <ion-item class="activated" lines="none">
+            <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+            <h6 slot="start">Visit Date</h6>
+            <h6 slot="end">{{item.date  | date:'dd-MM-yyyy'}}
+                </h6>
+          </ion-item>
+  
+          <ion-item lines="none">
+            <h6 slot="start">Doctor Name</h6>
+            <h6 slot="end">{{item.docter_name}}</h6>
+          </ion-item>
+          <ion-item class="activated" lines="none">
+              <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+              <h6 slot="start">Lab Test</h6>
+             <small slot="end"> <p   *ngFor="let obj of item.data">{{obj.name}}</p></small>
+            </ion-item>
+          <ion-item lines="none">
+              <h6 slot="start">Result</h6>
+              <h6 slot="end" (click)="view(item)">View</h6>
+            </ion-item>
+       
+     
+   
+  
+  </ion-card>
+  </ion-content>
+  

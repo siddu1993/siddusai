@@ -1,0 +1,205 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button (click)="back()" >
+            <ion-icon name="arrow-back"  ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Edit Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="validations_form"  >
+
+    <ion-card>
+
+        <ion-grid>
+           
+         
+           
+       
+          <ion-row>
+      
+          
+                <ion-col>
+                </ion-col>  
+          </ion-row> 
+          <ion-row>   
+          <ion-col size="6">
+           
+            <ion-item>
+              <ion-label  position="floating" ><small>full_name</small></ion-label>
+              <ion-input formControlName="docter_name"  ></ion-input>
+              
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.docter_name">
+                <div class="error-message" *ngIf="validations_form.get('docter_name').hasError(validation.type) && (validations_form.get('docter_name').dirty || validations_form.get('docter_name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+              </ng-container>
+              </ion-col>
+    
+              <ion-col>
+           
+                <ion-item >
+                  <ion-label  position="floating" ><small>Gender</small></ion-label>
+                  <ion-select  formControlName="sex" 
+                 >
+                  <ion-select-option value="Male">Male</ion-select-option>
+                  <ion-select-option value="FeMale">FeMale</ion-select-option>
+              
+                  </ion-select>
+                  
+                </ion-item>
+                <ng-container *ngFor="let validation of validation_messages.sex">
+                    <div class="error-message" *ngIf="validations_form.get('sex').hasError(validation.type) && (validations_form.get('sex').dirty || validations_form.get('sex').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                    </div>
+                  </ng-container>
+                  </ion-col>
+    
+        </ion-row>
+        
+
+          <ion-row>
+              <ion-col size="6">
+               
+                <ion-item>
+                  <ion-label  position="floating" ><small>Speciality</small></ion-label>
+                  <ion-input formControlName="speciality" ></ion-input>
+                  
+                </ion-item>
+                <ng-container *ngFor="let validation of validation_messages.speciality">
+                    <div class="error-message" *ngIf="validations_form.get('speciality').hasError(validation.type) && (validations_form.get('speciality').dirty || validations_form.get('speciality').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                    </div>
+                  </ng-container>
+                  </ion-col>
+                
+          </ion-row>
+          <ion-row>
+                      <ion-col size="6">
+                   
+               
+                        <ion-item>
+                          <ion-label position="floating" ><small>Email Id</small></ion-label>
+                          <ion-input   formControlName="email" ></ion-input>
+                          
+                        </ion-item>
+      
+                        <ng-container *ngFor="let validation of validation_messages.email">
+                            <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                            </div>
+                          </ng-container>
+                      </ion-col>
+        
+           
+            
+          
+                <ion-col>
+                 
+              <ion-item >
+                <ion-label position="floating" ><small>Address</small></ion-label>
+                <ion-input   formControlName="clinic_address"  ></ion-input>
+                
+              </ion-item>
+              <ng-container *ngFor="let validation of validation_messages.clinic_address">
+                  <div class="error-message" *ngIf="validations_form.get('clinic_address').hasError(validation.type) && (validations_form.get('clinic_address').dirty || validations_form.get('clinic_address').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                  </div>
+                </ng-container>
+                </ion-col>
+          
+              </ion-row>
+    
+         
+            
+             
+            
+              <ion-row>
+                
+                    <ion-col size="6">
+                       
+               
+                      <ion-item>
+                          <ion-label position="floating" ><small>City</small></ion-label>
+                          <ion-input   formControlName="city"  ></ion-input> 
+                      </ion-item>
+    
+                      <ng-container *ngFor="let validation of validation_messages.city">
+                          <div class="error-message" *ngIf="validations_form.get('city').hasError(validation.type) && (validations_form.get('city').dirty || validations_form.get('city').touched)">
+                            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                          </div>
+                        </ng-container>
+                    </ion-col>
+                 
+            
+                  
+                    <ion-col size="6">
+                   
+               
+                        <ion-item>
+
+                            <ion-label position="floating" ><small>State</small></ion-label>
+                            <ion-input   formControlName="state"  ></ion-input> 
+
+
+                  
+                        </ion-item>
+      
+                        <ng-container *ngFor="let validation of validation_messages.state">
+                            <div class="error-message" *ngIf="validations_form.get('state').hasError(validation.type) && (validations_form.get('state').dirty || validations_form.get('state').touched)">
+                              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                            </div>
+                          </ng-container>
+                      </ion-col>
+
+
+                      <ion-col size="6">
+                   
+               
+                          <ion-item>
+                              <ion-label position="floating" ><small>Hospital</small></ion-label>
+                              <ion-input   formControlName="hospital"  ></ion-input> 
+                          </ion-item>
+        
+                          <ng-container *ngFor="let validation of validation_messages.hospital">
+                              <div class="error-message" *ngIf="validations_form.get('hospital').hasError(validation.type) && (validations_form.get('hospital').dirty || validations_form.get('hospital').touched)">
+                                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                              </div>
+                            </ng-container>
+                        </ion-col>
+
+                        <ion-col size="6">
+                   
+               
+                          <ion-item>
+                              <ion-label position="floating" ><small>Phone No</small></ion-label>
+                              <ion-input  type="number" disabled="true" formControlName="docter_phone"  ></ion-input> 
+                          </ion-item>
+        
+                          <ng-container *ngFor="let validation of validation_messages.docter_phone">
+                              <div class="error-message" *ngIf="validations_form.get('docter_phone').hasError(validation.type) && (validations_form.get('docter_phone').dirty || validations_form.get('docter_phone').touched)">
+                                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                              </div>
+                            </ng-container>
+                        </ion-col>
+            
+                </ion-row>
+               
+                <div text-center>
+                    <ion-button (click)="doctor()" [disabled]="!validations_form.valid" fill="outline" shape="round"><small>Save</small></ion-button>
+                   
+                            
+                  </div>   
+              
+        
+    </ion-grid>
+      </ion-card>
+     
+        </form>
+</ion-content>
+
+

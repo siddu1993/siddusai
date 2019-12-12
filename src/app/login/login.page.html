@@ -1,0 +1,239 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title text-center>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    
+      <ion-row>
+          <ion-col col='6'>
+            <h6 padding-top>Select type :</h6>
+          </ion-col>
+        <ion-col col='6'>
+            <ion-select (ionChange)="change($event)" placeholder="Select type" padding-top padding-left padding-right>
+                <ion-select-option selected value="1">Patient</ion-select-option>
+                <ion-select-option value="2">Doctor</ion-select-option>
+                <ion-select-option value="3">Lab</ion-select-option>
+      
+              </ion-select>
+          </ion-col>
+      </ion-row>
+       
+
+        
+
+ <form [formGroup]="validations_patient" *ngIf="sel=='1'">
+  <div text-center >
+      <img class="cenimg"  src="assets/images/apollo.png">
+
+</div>
+  <ion-card >
+    
+
+    <ion-grid>
+      <ion-row>
+      <ion-col size="12">
+       
+        <ion-item>
+          <ion-label  position="floating" >Patient Phone No</ion-label>
+          <ion-input formControlName="phone_no"  ></ion-input>
+          
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.phone_no">
+          <div class="error-message" *ngIf="validations_patient.get('phone_no').hasError(validation.type) && (validations_patient.get('phone_no').dirty || validations_patient.get('phone_no').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+        
+      </ion-col>
+      <ion-col size="12">
+       
+        <ion-item>
+          <ion-label  position="floating" >password</ion-label>
+          <ion-input formControlName="password" type="password" ></ion-input>
+          
+        </ion-item>
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message" *ngIf="validations_patient.get('password').hasError(validation.type) && (validations_patient.get('password').dirty || validations_patient.get('password').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+        
+      </ion-col>
+
+    </ion-row>
+   
+   
+</ion-grid>
+  </ion-card >
+
+    <div text-center >
+
+
+    <ion-col >
+<div>
+        <ion-button    (click)="login(validations_patient,1)"  [disabled]="!validations_patient.valid" shape="round">Login</ion-button>
+</div>
+      </ion-col>
+      
+
+      <ion-row>
+        <ion-col size=6>
+          <div padding-top>
+              <b class="psw" [routerLink]="['/register']">Sign Up</b><br>
+          </div>
+        </ion-col>
+        <ion-col size=6>
+          <div padding-top>
+            <b class="psw" [routerLink]="['/fogotpass']">Forgot password? </b>
+          </div>
+        </ion-col>
+      </ion-row>
+   </div>
+   </form>
+
+
+
+   <form [formGroup]="validations_docter"   *ngIf="sel=='2'">
+    <div text-center>
+        <img class="cenimg"  src="assets/images/apollo.png">
+  
+  </div>
+    <ion-card >
+      <ion-grid>
+     
+      <ion-row>
+        <ion-col size="12">
+         
+          <ion-item>
+            <ion-label  position="floating" >Doctor Phone No</ion-label>
+            <ion-input formControlName="docter_phone"  ></ion-input>
+            
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.docter_phone">
+            <div class="error-message" *ngIf="validations_docter.get('docter_phone').hasError(validation.type) && (validations_docter.get('docter_phone').dirty || validations_docter.get('docter_phone').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+           
+        </ion-col>
+        <ion-col size="12">
+       
+          <ion-item>
+            <ion-label  position="floating" >password</ion-label>
+            <ion-input formControlName="password"  type="password" ></ion-input>
+            
+          </ion-item>
+          <ng-container *ngFor="let validation of validation_messages.password">
+            <div class="error-message" *ngIf="validations_docter.get('password').hasError(validation.type) && (validations_docter.get('password').dirty || validations_docter.get('password').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+          
+        </ion-col>
+  
+      </ion-row>
+     
+      
+  </ion-grid>
+    </ion-card>
+  
+      <div text-center >
+  
+  
+      <ion-col >
+  <div>
+          <ion-button (click)="login(validations_docter,2)"  [disabled]="!validations_docter.valid" shape="round">Login</ion-button>
+  </div>
+        </ion-col>
+        
+  
+        <ion-row>
+          <ion-col size=6>
+            <div padding-top>
+                <b class="psw" [routerLink]="['/docregiser']">Sign Up</b><br>
+            </div>
+          </ion-col>
+          <ion-col size=6>
+            <div padding-top>
+              <b class="psw" [routerLink]="['/fogotpass']">Forgot password? </b>
+            </div>
+          </ion-col>
+        </ion-row>
+     </div>
+     </form>
+
+
+
+     <form [formGroup]="validations_lab" *ngIf="sel=='3'"
+       >
+      <div text-center>
+          <img class="cenimg"  src="assets/images/apollo.png">
+    
+    </div>
+      <ion-card>
+        <ion-grid>
+     
+        <ion-row>
+          <ion-col size="12">
+           
+            <ion-item>
+              <ion-label  position="floating" >Lab Phone No</ion-label>
+              <ion-input formControlName="lab_phone"  ></ion-input>
+              
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.lab_phone">
+              <div class="error-message" *ngIf="validations_lab.get('lab_phone').hasError(validation.type) && (validations_lab.get('lab_phone').dirty || validations_lab.get('lab_phone').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+             
+          </ion-col>
+          <ion-col size="12">
+       
+            <ion-item>
+              <ion-label  position="floating" >password</ion-label>
+              <ion-input formControlName="password"  type="password" ></ion-input>
+              
+            </ion-item>
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message" *ngIf="validations_lab.get('password').hasError(validation.type) && (validations_lab.get('password').dirty || validations_lab.get('password').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+              </div>
+            </ng-container>
+            
+          </ion-col>
+    
+        </ion-row>
+        
+    </ion-grid>
+      </ion-card>
+    
+        <div text-center >
+    
+    
+        <ion-col >
+    <div>
+            <ion-button   (click)="login(validations_lab,3)"  [disabled]="!validations_lab.valid" shape="round">Login</ion-button>
+    </div>
+          </ion-col>
+          
+    <ion-row>
+        <ion-col size=6>
+          <div padding-top>
+              <b class="psw" [routerLink]="['/addnewlab']">Sign Up</b><br>
+          </div>
+        </ion-col>
+        <ion-col size=6>
+          <div padding-top>
+            <b class="psw" [routerLink]="['/fogotpass']">Forgot password? </b>
+            <b class="psw" [routerLink]="['/hospitalreg']">Hospital Sign Up  </b>
+
+          </div>
+        </ion-col>
+      </ion-row>
+       </div>
+       </form>
+       
+</ion-content>

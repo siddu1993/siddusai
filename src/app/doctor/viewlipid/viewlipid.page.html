@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button (click)="back()" >
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card class="cardsize" *ngFor="let item of result.data">
+    <ion-item lines="none">
+      <h6 slot="start">{{item.name}}</h6>
+      <h6 slot="end">{{item.unit}}</h6>
+    </ion-item>
+  
+    <ion-item class="activated" lines="none">
+      <h6 slot="start">method</h6>
+      <small slot="end"><p>{{item.method}}</p></small>
+    </ion-item>
+
+     <!--   <ion-item lines="none">
+      <h6 slot="start">Lab Test</h6>
+      <h6 slot="end">{{item.test_name}}</h6>
+    </ion-item>
+
+    <ion-item class="activated" lines="none">
+      <h6 slot="start">Result</h6>
+     <u slot="end" (click)="view(item)"> <h6 >View</h6></u>
+    </ion-item>-->
+  
+  
+  </ion-card>  
+
+</ion-content>

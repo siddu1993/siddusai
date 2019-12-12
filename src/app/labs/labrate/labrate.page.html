@@ -1,0 +1,50 @@
+
+<ion-toolbar>
+  <ion-title>
+    Lab Rating
+  </ion-title>
+  <ion-buttons slot="start">
+    <ion-button (click)="back()" >
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-content>
+    <form [formGroup]="validations_form"  >
+    
+<ion-card>
+        <ion-item>
+            <small > <ion-label position="floating">Lab Name</ion-label></small>
+
+            <ion-select  formControlName="lab_name" 
+            >
+            <ion-select-option *ngFor="let obj of lablist">{{obj.name}}</ion-select-option>
+         
+          </ion-select>
+          
+        </ion-item>
+
+<ion-item>
+    <small > <ion-label position="floating">Rating</ion-label></small>
+
+
+<ion-select  formControlName="rating" 
+>
+<ion-select-option value="1">1</ion-select-option>
+<ion-select-option value="2">2</ion-select-option>
+<ion-select-option value="3">3</ion-select-option>
+<ion-select-option value="4">4</ion-select-option>
+<ion-select-option value="5">5</ion-select-option>
+</ion-select>
+</ion-item>
+
+<ion-item>
+    <small > <ion-label position="floating">Comments</ion-label></small>
+
+  <ion-textarea formControlName="comments"   ></ion-textarea>
+</ion-item>
+
+<ion-button (click)="addUser(validations_form)" [disabled]="!validations_form.valid" fill="outline" shape="round"><small>Save</small></ion-button>
+</ion-card>
+</form>
+</ion-content>

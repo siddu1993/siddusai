@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-buttons slot="start">
+        <ion-button (click)="close()" >
+          <ion-icon name="close"  ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  <ion-toolbar>
+    <ion-title>Test Name</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Test Name</ion-label>
+    <ionic-selectable
+      [(ngModel)]="port"
+      [items]="testname"
+      itemValueField="id"
+      itemTextField="name"
+      [canSearch]="true"
+      (onChange)="portChange($event)">
+    </ionic-selectable>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Type Of The test</ion-label>
+    <ionic-selectable
+      [(ngModel)]="port1"
+      [items]="testname"
+      [isMultiple]="true"
+      itemValueField="id"
+      itemTextField="name"
+      [canSearch]="true"
+      (onChange)="portChange1($event)">
+    </ionic-selectable>
+  </ion-item>
+  <ion-button (click)="next()"  fill="outline" shape="round"><small>Save</small></ion-button>
+
+</ion-content>

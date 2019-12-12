@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()" >
+        <ion-icon name="arrow-back"  ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Doctor  Visits</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+ 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          DoctorId: {{docter_id}}
+        </div>
+        <div class="col-sm">
+          Name    :{{docname}}
+        </div>
+        <div class="col-sm">
+          Patient:{{patient_id}}
+        </div>
+      </div>
+    </div>
+
+
+    <div>
+    <ion-item  lines="none">
+    
+     
+      <u slot='start'> <p   (click)="history()">View History</p></u>
+    </ion-item>
+  </div>
+  <form class="col s12 offset-s4" [formGroup]="patientupdateForm" (ngSubmit)="save(patientupdateForm)">
+
+    <div class="container">
+
+
+      <ion-row *ngIf="userData !=''">
+        
+      <ion-item>
+       <ion-label position="floating">Name</ion-label>
+      <ion-select  formControlName="child_name" 
+      >
+      <ion-select-option  value="">{{full_name}}</ion-select-option>
+   
+      <ion-select-option *ngFor="let obj of userData" value="{{obj.name }}">{{obj.name }}</ion-select-option>
+      </ion-select>
+      </ion-item>
+  
+  </ion-row>
+
+
+  <ion-item >
+    <ion-label position="floating">Reason for Visit</ion-label>
+    <ion-input formControlName="reason"></ion-input>
+    </ion-item>
+   
+        <ion-item >
+      <ion-label position="floating" >Blood Pressure</ion-label>
+      <ion-input formControlName="blood_pressure"></ion-input>
+      </ion-item>
+ 
+        <ion-item >
+      <ion-label position="floating" >Doctor's comments</ion-label>
+      <ion-input  formControlName="comments" ></ion-input>
+      </ion-item>
+  
+   
+
+   
+        <ion-item >
+      <ion-label position="floating">Medicine Prescribed</ion-label>
+      <ion-input formControlName="medicine_prescribed"></ion-input>
+      </ion-item>
+
+    <ion-item >
+      <ion-label >Any Lab Test required?</ion-label>
+      <ion-checkbox  formControlName="labtest_required" (ionChange)="check($event)"></ion-checkbox>
+      
+      </ion-item>
+
+      <ion-item *ngIf="ch==true">
+        <ion-label>Test Name</ion-label>
+        <ionic-selectable
+        formControlName="test_name"
+          [(ngModel)]="port"
+          [items]="testname"
+          [isMultiple]="true"
+
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          (onChange)="portChange($event)">
+        </ionic-selectable>
+      </ion-item>
+
+
+  
+      <ion-item lines="none">
+ <ion-button  color="primary"  (click)="save(patientupdateForm)"  shape="round">Submit</ion-button>
+</ion-item>
+    </div>
+</form>
+
+</ion-content>

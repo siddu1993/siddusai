@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Persons</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()" >
+        <ion-icon name="close"  ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+      <form [formGroup]="validations_form" >
+      <ion-card>
+  
+          <ion-item>
+              <small > <ion-label position="floating">Name</ion-label></small>
+              <ion-input formControlName="name"  ></ion-input>
+
+
+            
+          </ion-item>
+  
+  <ion-item>
+      <small > <ion-label position="floating">gender</ion-label></small>
+  
+  
+  <ion-select  formControlName="gender" 
+  >
+  <ion-select-option value="Male">Male</ion-select-option>
+  <ion-select-option value="Female">Female</ion-select-option>
+ 
+  </ion-select>
+  </ion-item>
+  
+  <ion-item>
+      <small > <ion-label position="floating">age</ion-label></small>
+      <ion-input formControlName="age"  ></ion-input>
+
+  </ion-item>
+  
+  <ion-button (click)="addUser(validations_form)"  fill="outline" shape="round"><small>Save</small></ion-button>
+  </ion-card>
+  </form>
+  
+</ion-content>

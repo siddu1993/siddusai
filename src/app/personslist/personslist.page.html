@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" class="menu">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+      <ion-title>Persons</ion-title>
+  
+    </ion-toolbar>
+  
+   
+  
+  </ion-header>
+  
+  <ion-content>
+    <ion-list>
+ 
+      <ion-card class="cardsize" *ngFor="let userData of userData">
+        <ion-item lines="none">
+          <h6 slot="start">Patient id</h6>
+          <h6 slot="end">{{userData.patient_id}}</h6>
+        </ion-item>
+      
+        <ion-item class="activated" lines="none">
+          <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
+          <h6 slot="start">Name</h6>
+          <small slot="end">{{ userData.name}}</small>
+        </ion-item>
+  
+        <ion-item lines="none">
+          <h6 slot="start">Age</h6>
+          <h6 slot="end">{{userData.age}}</h6>
+        </ion-item>
+  
+        <ion-item class="activated" lines="none">
+          <h6 slot="start">Gender</h6>
+          <h6 slot="end">{{ userData.gender}} </h6>
+        </ion-item>
+    
+       
+       
+      
+      
+        <ion-item lines="none">
+  
+  
+            <ion-text (click)="edit(userData)" slot="start" color="primary">
+                <h6><u>Edit</u></h6>
+              </ion-text>
+              <ion-text (click)="childremove(userData)" slot="end" color="primary">
+                <h6><u>delete</u></h6>
+              </ion-text>
+              
+         
+        </ion-item>
+      </ion-card>
+
+      
+  
+   
+  </ion-list>
+  
+  
+  
+  
+  </ion-content>
+  
