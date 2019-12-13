@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { MenuController, NavController, ModalController } from '@ionic/angular';
 import { LipidprofilePage } from 'src/app/lipidprofile/lipidprofile.page';
 import { EditchdetailsPage } from '../editchdetails/editchdetails.page';
+import { DatePipe } from '@angular/common';
 declare var swal;
 @Component({
   selector: 'app-patentmedicalhistory',
@@ -25,8 +26,9 @@ export class PatentmedicalhistoryPage implements OnInit {
   years:any=[{year:2019},{year:2020},{year:2021},{year:2022},{year:2023},{year:2024},{year:2025},{year:2026},{year:2027},{year:2028}];
   full_name: string;
   docter_id: string;
-
-  constructor(public modalController:ModalController,public route:Router,public nav:NavController,public auth:AuthService,public menu: MenuController) {
+  dateee: string;
+  
+  constructor(private datePipe: DatePipe,public modalController:ModalController,public route:Router,public nav:NavController,public auth:AuthService,public menu: MenuController) {
 
     
     this. patient_id=localStorage.getItem('patient_id');
@@ -38,8 +40,10 @@ export class PatentmedicalhistoryPage implements OnInit {
     
     console.log('222', this. patient_id);
     this.list();
+    
+    this.dateee=(this.datePipe.transform(Date.now(), 'ddMMyyyy')).toString()
+    console.log('data3333',this.dateee);
 
- 
    }
    ngOnInit() {
     this.labhistory();

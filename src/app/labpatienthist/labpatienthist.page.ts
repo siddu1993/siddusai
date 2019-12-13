@@ -3,6 +3,7 @@ import { LipidprofilePage } from '../lipidprofile/lipidprofile.page';
 import { ModalController, NavController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-labpatienthist',
@@ -26,14 +27,16 @@ export class LabpatienthistPage implements OnInit {
   test_name: any;
   test_res: any;
   lab_id: any;
+  dateee: any;
 
-  constructor(public modalController:ModalController,public route:Router,public nav:NavController,public auth:AuthService,public menu: MenuController) {
+  constructor(private datePipe: DatePipe,public modalController:ModalController,public route:Router,public nav:NavController,public auth:AuthService,public menu: MenuController) {
 
     
     this. patient_id=localStorage.getItem('patient_id');
     this. full_name=localStorage.getItem('full_name');
     this. lab_id=localStorage.getItem('lab_id');
-    
+    this.dateee=(this.datePipe.transform(Date.now(), 'ddMMyyyy')).toString()
+
     
     console.log('222', this. patient_id);
      this.labhistory();

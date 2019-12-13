@@ -100,11 +100,11 @@
                       <h6 slot="start">Report Status</h6>
                       <h6 slot="end" *ngIf="item.status=='1'">Completed</h6>
                       <h6 slot="end" *ngIf="item.status!='1'">Not Completed</h6>
-                      <h6 slot="end" *ngIf="item.status!='1' && item.docter_id ==docter_id" (click)="editdc(item)"><u>Edit</u></h6>
+                      <h6 slot="end" *ngIf="item.status!='1' && item.docter_id ==docter_id && (item.date| date:'ddMMyyyy') == dateee " (click)="editdc(item)"><u>Edit</u></h6>
+                    
+                    
                     </ion-item>
-          
-         
-       
+                   
         </ion-card>
   
         <div  text-center>

@@ -24,7 +24,11 @@ export class EditpatientPage implements OnInit {
 
     full_name: ['',Validators.required],
     date_of_birth: ['',Validators.required],
-    email: ['',Validators.required],
+    email: ['',Validators.compose([
+      Validators.required,
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'),
+
+    ])],
     address: ['',Validators.required],
     city: ['',Validators.required],
     state:['',Validators.required],
@@ -81,8 +85,9 @@ this.validations_form.patchValue(this.data);
       'sex': [
         { type: 'required', message: 'sex is required.' },],
 
-    'email': [
-        { type: 'required', message: 'phone is required.' }],
+        'email': [
+          { type: 'required', message: 'Email id is required.' },
+          { type: 'pattern', message: 'please enter valid email' }],
     'date_of_birth': [
           { type: 'required', message: 'date_of_birth is required.' },
         ],

@@ -21,6 +21,7 @@ import { EditchildPageModule } from './editchild/editchild.module';
 import { EditpatientPageModule } from './editpatient/editpatient.module';
 import { DoceditPageModule } from './doctor/docedit/docedit.module';
 import { EditchdetailsPageModule } from './doctor/editchdetails/editchdetails.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, AddpersonsPipe],
@@ -45,7 +46,7 @@ import { EditchdetailsPageModule } from './doctor/editchdetails/editchdetails.mo
     StatusBar,
     SplashScreen,
     AuthService,
-   
+    DatePipe,
   
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

@@ -87,6 +87,14 @@
       <h6 slot="start">Lab Test Recommended </h6>
       <h6 slot="end">{{item.labtest_required}}</h6>
     </ion-item>
+ 
+    <ion-item  lines="none">
+      <h6 slot="start">Lab Test Name</h6>
+      <div slot="end">
+        <small *ngFor="let obj of item.test_name"> <p>{{obj.name}}</p></small>
+     </div>                
+    </ion-item>
+
     <ion-item  class="activated">
       <h6 slot="start">Date</h6>
       <h6 slot="end">{{item.date  | date:'dd-MM-yyyy'}}</h6>
