@@ -34,6 +34,10 @@ export class LabinformationPage implements OnInit {
           this.route.navigateByUrl("/labpatienthist");
           //labtestupdate
         }
+        else{
+          this.auth.presentToast("patient not exists");
+
+        }
      
       }
     },
