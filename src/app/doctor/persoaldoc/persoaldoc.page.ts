@@ -40,13 +40,16 @@ export class PersoaldocPage implements OnInit {
           localStorage.setItem("patient_id",this.name.patient_id);
           this.route.navigateByUrl("/chckpdetails");
         }
+        else{
+          this.auth.presentToast("patient not exits ");
+
+        }
      
       }
     },
        
  
        () => {
-        this.auth.presentToast("Login failed, Login detils not exits ");
      }
      );
    }

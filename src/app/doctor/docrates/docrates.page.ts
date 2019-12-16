@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth.service';
-declare var swal;
 
 @Component({
   selector: 'app-docrates',
@@ -50,12 +49,7 @@ this.doctorlist();
           }
        
         }
-      },
-         
-   
-         () => {
-        swal("Login failed, Login detils not exits ");
-       }
+      }
        );
      }
      doctorlist(){
@@ -70,13 +64,10 @@ this.doctorlist();
           
        }}
        
-      },
+      }
          
    
-         () => {
-          this.auth.presentToast("error");
-  
-       }
+      
        );
      }
   

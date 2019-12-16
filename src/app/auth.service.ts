@@ -11,11 +11,11 @@ import { ToastController, LoadingController } from '@ionic/angular';
 
 export class AuthService {
 
- // baseUrl: string = 'http://115.118.240.231:4100';
+  baseUrl: string = 'http://115.118.240.231:4100';
   //baseUrl: string = 'http://192.168.1.106:3000';
  // baseUrl: string = 'http://192.168.1.137:3000';
 
-  baseUrl: string = 'http://192.168.1.120:4100';
+  //baseUrl: string = 'http://192.168.1.120:4100';
  //baseUrl: string = 'http://192.168.1.104:3000';
   //baseUrl: string = 'http://18.220.79.100:4100';
  //baseUrl: string = 'http://ec2-18-219-216-51.us-east-2.compute.amazonaws.com';

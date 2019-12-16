@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: 'labpatienthist', loadChildren: './labpatienthist/labpatienthist.module#LabpatienthistPageModule' },
   { path: 'viewlipid', loadChildren: './doctor/viewlipid/viewlipid.module#ViewlipidPageModule' },
   { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule' },
-  { path: 'editchdetails', loadChildren: './doctor/editchdetails/editchdetails.module#EditchdetailsPageModule' }
+  { path: 'editchdetails', loadChildren: './doctor/editchdetails/editchdetails.module#EditchdetailsPageModule' },
 ];
 
 @NgModule({

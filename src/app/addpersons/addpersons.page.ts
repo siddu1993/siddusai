@@ -49,12 +49,7 @@ export class AddpersonsPage implements OnInit {
           }
        
         }
-      },
-         
-   
-         () => {
-          this.auth.presentToast("Login failed, Login detils not exits ");
-       }
+      }
        );
      }
   

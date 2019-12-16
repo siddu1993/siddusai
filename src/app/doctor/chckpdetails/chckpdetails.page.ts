@@ -110,12 +110,7 @@ this.list();
         }
      
       }
-    },
-       
- 
-       () => {
-      this.auth.presentToast("Login failed, Login detils not exits ");
-     }
+    }
      );
    }
    view(){
@@ -137,12 +132,7 @@ this.list();
           
        this.search();
         }
-      },
-         
-   
-         () => {
-          this.auth.presentToast("Login failed, Login detils not exits ");
-       }
+      }
        );
      }
 
@@ -190,11 +180,7 @@ this.list();
        
         }
       },
-         
-   
-         () => {
-          this.auth.presentToast("Login failed, Login detils not exits ");
-       }
+        
        );
      }
 
@@ -216,12 +202,7 @@ this.list();
           }
        
         }
-      },
-         
-   
-         () => {
-          this.auth.presentToast("Login failed, Login detils not exits ");
-       }
+      }
        );
      }
   }

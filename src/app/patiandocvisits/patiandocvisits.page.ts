@@ -43,7 +43,7 @@ export class PatiandocvisitsPage implements OnInit {
       if (res.status == "success") {
      {
       
-         this. visits=res.response 
+         this. visits=(res.response).reverse() ;
       //  this.name=res.response[0].full_name;
      this.doctorlist();
         
@@ -89,7 +89,7 @@ export class PatiandocvisitsPage implements OnInit {
          
          if (res.status == "success") {
            if (res.response != "") {
-          this.child=res.response;
+          this.child=(res.response).reverse() ;
           
             // localStorage.setItem("full_name",this.name);
             // this.router.navigateByUrl("/patientsearch");
@@ -124,7 +124,7 @@ export class PatiandocvisitsPage implements OnInit {
     this.auth.patientsearch({year:this.searchOptions.year,patient_id:this.patient_id,docter_name:this.searchOptions.docter_name,child_name:this.searchOptions.child_name}).subscribe(res => {
       if (res.status == 'success') {
        
-        this.visits = res.response;
+        this.visits = (res.response).reverse() ;
        
         console.log(39,this.visits);
        
