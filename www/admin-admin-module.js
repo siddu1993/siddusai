@@ -58,7 +58,7 @@ var AdminPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>admin</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n        <ion-card>\n    \n        \n    \n    <ion-item>\n        <small > <ion-label position=\"floating\">Main</ion-label></small>\n    \n    \n    <ion-select  [(ngModel)]=\"mname\" (ionChange)=\"change($event)\">\n    <ion-select-option *ngFor=\"let obj of main\"  value=\"{{obj._id}}\">{{obj.name}}  </ion-select-option>\n   \n    </ion-select>\n    </ion-item>\n    <ion-item>\n     <ion-label position=\"floating\">Sub</ion-label>\n    \n    <ion-input [(ngModel)]=\"name\" ></ion-input>\n   \n    </ion-item>\n    <ion-item>\n        <ion-label slot=\"start\" position=\"floating\">Show in the listing</ion-label>\n\n        <ion-checkbox slot=\"end\" [(ngModel)]=\"che\" (ionChange)=\"check($event)\"></ion-checkbox>\n\n    </ion-item>\n  \n    <ion-button (click)=\"save()\"  fill=\"outline\" shape=\"round\"><small>Save</small></ion-button>\n    </ion-card>\n</ion-content>\n"
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>admin</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  \n        <ion-card>\n    \n        \n    \n    <ion-item>\n        <small > <ion-label position=\"floating\">Main</ion-label></small>\n    \n    \n    <ion-select  [(ngModel)]=\"mname\" (ionChange)=\"change($event)\">\n    <ion-select-option *ngFor=\"let obj of main\"  value=\"{{obj._id}}\">{{obj.name}}  </ion-select-option>\n   \n    </ion-select>\n    </ion-item>\n    <ion-item>\n     <ion-label position=\"floating\">Sub</ion-label>\n    \n    <ion-input [(ngModel)]=\"name\" ></ion-input>\n   \n    </ion-item>\n\n    <ion-item>\n      <ion-label position=\"floating\">Bio ref Range</ion-label>\n     \n     <ion-input [(ngModel)]=\"range\" ></ion-input>\n    \n     </ion-item>\n    <ion-item>\n        <ion-label slot=\"start\" position=\"floating\">Show in the listing</ion-label>\n\n        <ion-checkbox slot=\"end\" [(ngModel)]=\"che\" (ionChange)=\"check($event)\"></ion-checkbox>\n\n    </ion-item>\n  \n    <ion-button (click)=\"save()\"  fill=\"outline\" shape=\"round\"><small>Save</small></ion-button>\n    </ion-card>\n</ion-content>\n"
 
 /***/ }),
 
@@ -117,7 +117,7 @@ var AdminPage = /** @class */ (function () {
                 }
             }
         }, function () {
-            _this.auth.presentToast("Login failed, Login detils not exits ");
+            _this.auth.presentToast("server failed, server details not exits ");
         });
     };
     AdminPage.prototype.check = function (e) {
@@ -130,7 +130,7 @@ var AdminPage = /** @class */ (function () {
     AdminPage.prototype.save = function () {
         var _this = this;
         // this.labupdateForm .value.docter_id=this.docter_id;
-        this.auth.testcreate({ relation: this.relation, name: this.name, condition: this.ch }).subscribe(function (res) {
+        this.auth.testcreate({ relation: this.relation, name: this.name, condition: this.ch, range: this.range }).subscribe(function (res) {
             if (res.status == "success") {
                 if (res.response != "") {
                     _this.main = res.response;
@@ -142,7 +142,7 @@ var AdminPage = /** @class */ (function () {
                 }
             }
         }, function () {
-            _this.auth.presentToast("Login details not exits ");
+            _this.auth.presentToast("server details not exits ");
         });
     };
     AdminPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

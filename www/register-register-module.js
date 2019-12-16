@@ -70,7 +70,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".i-button {\n  height: 28px; }\n\n.cenimg {\n  height: 71px;\n  padding-top: 10px; }\n\n.sele {\n  padding-top: 30px; }\n\nion-icon {\n  color: #ffffff !important; }\n\n.error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nsmall {\n  font-size: 63%; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-card {\n  border: 2px solid grey; }\n\n.psw {\n  color: skyblue; }\n\n.ion-content {\n  overflow: hidden; }\n\nion-title {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvRDpcXG5ld2FwcG9sb1xcYXBwb2xvL3NyY1xcYXBwXFxyZWdpc3RlclxccmVnaXN0ZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFDSixFQUFBOztBQUNBO0VBQ0ksWUFBWTtFQUNaLGlCQUFnQixFQUFBOztBQUVwQjtFQUNJLGlCQUFpQixFQUFBOztBQUVyQjtFQUNJLHlCQUEwQixFQUFBOztBQUU5QjtFQUVFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUVsQjtFQUNJLGNBQWMsRUFBQTs7QUFFbEI7RUFDSSxnQ0FBYTtFQUNiLHFCQUFtQixFQUFBOztBQUV2QjtFQUNJLHNCQUFzQixFQUFBOztBQUd6QjtFQUNJLGNBQWEsRUFBQTs7QUFFakI7RUFDRCxnQkFBZ0IsRUFBQTs7QUFFZjtFQUNHLHlCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvcmVnaXN0ZXIvcmVnaXN0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmktYnV0dG9ue1xyXG4gICAgaGVpZ2h0OjI4cHhcclxufVxyXG4uY2VuaW1ne1xyXG4gICAgaGVpZ2h0OiA3MXB4OyBcclxuICAgIHBhZGRpbmctdG9wOjEwcHg7XHJcbn1cclxuLnNlbGV7XHJcbiAgICBwYWRkaW5nLXRvcDogMzBweDtcclxufVxyXG5pb24taWNvbntcclxuICAgIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyBcclxufVxyXG4uZXJyb3ItbWVzc2FnZVxyXG57XHJcbiAgY29sb3I6IHJlZDtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbiAgbWFyZ2luLXRvcDogMTBweDtcclxufVxyXG5zbWFsbCB7XHJcbiAgICBmb250LXNpemU6IDYzJTtcclxufVxyXG5pb24tdG9vbGJhcntcclxuICAgIC0tYmFja2dyb3VuZDogIzEzOEQ3NSFpbXBvcnRhbnQgO1xyXG4gICAgb3BhY2l0eToxIWltcG9ydGFudDsgXHJcbn1cclxuaW9uLWNhcmQge1xyXG4gICAgYm9yZGVyOiAycHggc29saWQgZ3JleTtcclxuXHJcbiB9XHJcbiAucHN3e1xyXG4gICAgIGNvbG9yOnNreWJsdWU7XHJcbiB9XHJcbiAuaW9uLWNvbnRlbnR7XHJcbm92ZXJmbG93OiBoaWRkZW47XHJcbiB9XHJcbiBpb24tdGl0bGV7XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn0iXX0= */"
+module.exports = ".i-button {\n  height: 28px; }\n\n.cenimg {\n  height: 71px;\n  padding-top: 10px; }\n\n.sele {\n  padding-top: 30px; }\n\nion-icon {\n  color: #ffffff !important; }\n\n.error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nsmall {\n  font-size: 63%; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-card {\n  border: 2px solid grey; }\n\n.psw {\n  color: skyblue; }\n\n.ion-content {\n  overflow: hidden; }\n\nion-title {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvRDpcXG5ld2FwcG9sb1xcc2lkZHVzYWkuZ2l0XFx0cnVuay9zcmNcXGFwcFxccmVnaXN0ZXJcXHJlZ2lzdGVyLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQ0osRUFBQTs7QUFDQTtFQUNJLFlBQVk7RUFDWixpQkFBZ0IsRUFBQTs7QUFFcEI7RUFDSSxpQkFBaUIsRUFBQTs7QUFFckI7RUFDSSx5QkFBMEIsRUFBQTs7QUFFOUI7RUFFRSxVQUFVO0VBQ1YsZUFBZTtFQUNmLGlCQUFpQjtFQUNqQixnQkFBZ0IsRUFBQTs7QUFFbEI7RUFDSSxjQUFjLEVBQUE7O0FBRWxCO0VBQ0ksZ0NBQWE7RUFDYixxQkFBbUIsRUFBQTs7QUFFdkI7RUFDSSxzQkFBc0IsRUFBQTs7QUFHekI7RUFDSSxjQUFhLEVBQUE7O0FBRWpCO0VBQ0QsZ0JBQWdCLEVBQUE7O0FBRWY7RUFDRyx5QkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3JlZ2lzdGVyL3JlZ2lzdGVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pLWJ1dHRvbntcclxuICAgIGhlaWdodDoyOHB4XHJcbn1cclxuLmNlbmltZ3tcclxuICAgIGhlaWdodDogNzFweDsgXHJcbiAgICBwYWRkaW5nLXRvcDoxMHB4O1xyXG59XHJcbi5zZWxle1xyXG4gICAgcGFkZGluZy10b3A6IDMwcHg7XHJcbn1cclxuaW9uLWljb257XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn1cclxuLmVycm9yLW1lc3NhZ2Vcclxue1xyXG4gIGNvbG9yOiByZWQ7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gIG1hcmdpbi10b3A6IDEwcHg7XHJcbn1cclxuc21hbGwge1xyXG4gICAgZm9udC1zaXplOiA2MyU7XHJcbn1cclxuaW9uLXRvb2xiYXJ7XHJcbiAgICAtLWJhY2tncm91bmQ6ICMxMzhENzUhaW1wb3J0YW50IDtcclxuICAgIG9wYWNpdHk6MSFpbXBvcnRhbnQ7IFxyXG59XHJcbmlvbi1jYXJkIHtcclxuICAgIGJvcmRlcjogMnB4IHNvbGlkIGdyZXk7XHJcblxyXG4gfVxyXG4gLnBzd3tcclxuICAgICBjb2xvcjpza3libHVlO1xyXG4gfVxyXG4gLmlvbi1jb250ZW50e1xyXG5vdmVyZmxvdzogaGlkZGVuO1xyXG4gfVxyXG4gaW9uLXRpdGxle1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59Il19 */"
 
 /***/ }),
 
@@ -117,7 +117,8 @@ var RegisterPage = /** @class */ (function () {
                 { type: 'required', message: 'sex is required.' },
             ],
             'email': [
-                { type: 'required', message: 'phone is required.' }
+                { type: 'required', message: 'Email id is required.' },
+                { type: 'pattern', message: 'please enter valid email' }
             ],
             'date_of_birth': [
                 { type: 'required', message: 'date_of_birth is required.' },
@@ -148,7 +149,10 @@ var RegisterPage = /** @class */ (function () {
         this.validations_form = formBuilder.group({
             full_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             date_of_birth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'),
+                ])],
             address: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             city: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             state: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],

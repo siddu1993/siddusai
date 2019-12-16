@@ -455,6 +455,9 @@ var map = {
 		"./src/app/doctor/docregiser/docregiser.module.ts",
 		"doctor-docregiser-docregiser-module"
 	],
+	"./doctor/editchdetails/editchdetails.module": [
+		"./src/app/doctor/editchdetails/editchdetails.module.ts"
+	],
 	"./doctor/patentmedicalhistory/patentmedicalhistory.module": [
 		"./src/app/doctor/patentmedicalhistory/patentmedicalhistory.module.ts",
 		"doctor-patentmedicalhistory-patentmedicalhistory-module"
@@ -663,7 +666,8 @@ var routes = [
     { path: 'selectable', loadChildren: './selectable/selectable.module#SelectablePageModule' },
     { path: 'labpatienthist', loadChildren: './labpatienthist/labpatienthist.module#LabpatienthistPageModule' },
     { path: 'viewlipid', loadChildren: './doctor/viewlipid/viewlipid.module#ViewlipidPageModule' },
-    { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule' }
+    { path: 'admin', loadChildren: './admin/admin.module#AdminPageModule' },
+    { path: 'editchdetails', loadChildren: './doctor/editchdetails/editchdetails.module#EditchdetailsPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -806,6 +810,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editchild_editchild_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./editchild/editchild.module */ "./src/app/editchild/editchild.module.ts");
 /* harmony import */ var _editpatient_editpatient_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./editpatient/editpatient.module */ "./src/app/editpatient/editpatient.module.ts");
 /* harmony import */ var _doctor_docedit_docedit_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./doctor/docedit/docedit.module */ "./src/app/doctor/docedit/docedit.module.ts");
+/* harmony import */ var _doctor_editchdetails_editchdetails_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./doctor/editchdetails/editchdetails.module */ "./src/app/doctor/editchdetails/editchdetails.module.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _errordlog__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./errordlog */ "./src/app/errordlog.ts");
+/* harmony import */ var _http_config_interceptor_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./http-config-interceptor.service */ "./src/app/http-config-interceptor.service.ts");
+
+
+
+
 
 
 
@@ -846,11 +858,15 @@ var AppModule = /** @class */ (function () {
                 _labs_editlab_editlab_module__WEBPACK_IMPORTED_MODULE_15__["EditlabPageModule"],
                 _editpatient_editpatient_module__WEBPACK_IMPORTED_MODULE_18__["EditpatientPageModule"],
                 _doctor_docedit_docedit_module__WEBPACK_IMPORTED_MODULE_19__["DoceditPageModule"],
+                _doctor_editchdetails_editchdetails_module__WEBPACK_IMPORTED_MODULE_20__["EditchdetailsPageModule"],
             ],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
                 _auth_service__WEBPACK_IMPORTED_MODULE_9__["AuthService"],
+                _angular_common__WEBPACK_IMPORTED_MODULE_21__["DatePipe"],
+                _errordlog__WEBPACK_IMPORTED_MODULE_22__["ErrordialogServicce"],
+                { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HTTP_INTERCEPTORS"], useClass: _http_config_interceptor_service__WEBPACK_IMPORTED_MODULE_23__["HttpConfigInterceptorService"], multi: true },
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
@@ -889,12 +905,12 @@ var AuthService = /** @class */ (function () {
         this.toastController = toastController;
         this.loadingController = loadingController;
         this.http = http;
-        //baseUrl: string = 'http://192.168.43.190:3000';
+        this.baseUrl = 'http://115.118.240.231:4100';
         //baseUrl: string = 'http://192.168.1.106:3000';
         // baseUrl: string = 'http://192.168.1.137:3000';
         //baseUrl: string = 'http://192.168.1.120:4100';
         //baseUrl: string = 'http://192.168.1.104:3000';
-        this.baseUrl = 'http://18.220.79.100:4100';
+        //baseUrl: string = 'http://18.220.79.100:4100';
         //baseUrl: string = 'http://ec2-18-219-216-51.us-east-2.compute.amazonaws.com';
         // baseUrl: string = 'http://18.221.37.201:4000';  
         this.addUserData = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
@@ -1186,7 +1202,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-title {\n  color: #ffffff !important; }\n\n.error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZG9jdG9yL2RvY2VkaXQvRDpcXG5ld2FwcG9sb1xcYXBwb2xvL3NyY1xcYXBwXFxkb2N0b3JcXGRvY2VkaXRcXGRvY2VkaXQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kseUJBQTBCLEVBQUE7O0FBRTlCO0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCLEVBQUE7O0FBRWxCO0VBQ0UsZ0NBQWE7RUFDYixxQkFBbUIsRUFBQTs7QUFFckI7RUFDSSx5QkFBMEIsRUFBQTs7QUFFOUI7RUFDRSx5QkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2RvY3Rvci9kb2NlZGl0L2RvY2VkaXQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRpdGxle1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59XHJcbi5lcnJvci1tZXNzYWdlXHJcbntcclxuICBjb2xvcjogcmVkO1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tbGVmdDogMTBweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG59XHJcbmlvbi10b29sYmFye1xyXG4gIC0tYmFja2dyb3VuZDogIzEzOEQ3NSFpbXBvcnRhbnQgO1xyXG4gIG9wYWNpdHk6MSFpbXBvcnRhbnQ7IFxyXG59XHJcbmlvbi1idXR0b25ze1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7ICBcclxufVxyXG5pb24taWNvbntcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgIFxyXG59XHJcblxyXG4iXX0= */"
+module.exports = "ion-title {\n  color: #ffffff !important; }\n\n.error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZG9jdG9yL2RvY2VkaXQvRDpcXG5ld2FwcG9sb1xcc2lkZHVzYWkuZ2l0XFx0cnVuay9zcmNcXGFwcFxcZG9jdG9yXFxkb2NlZGl0XFxkb2NlZGl0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHlCQUEwQixFQUFBOztBQUU5QjtFQUVFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUVsQjtFQUNFLGdDQUFhO0VBQ2IscUJBQW1CLEVBQUE7O0FBRXJCO0VBQ0kseUJBQTBCLEVBQUE7O0FBRTlCO0VBQ0UseUJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9kb2N0b3IvZG9jZWRpdC9kb2NlZGl0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZXtcclxuICAgIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyBcclxufVxyXG4uZXJyb3ItbWVzc2FnZVxyXG57XHJcbiAgY29sb3I6IHJlZDtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbiAgbWFyZ2luLXRvcDogMTBweDtcclxufVxyXG5pb24tdG9vbGJhcntcclxuICAtLWJhY2tncm91bmQ6ICMxMzhENzUhaW1wb3J0YW50IDtcclxuICBvcGFjaXR5OjEhaW1wb3J0YW50OyBcclxufVxyXG5pb24tYnV0dG9uc3tcclxuICAgIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyAgXHJcbn1cclxuaW9uLWljb257XHJcbiAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7ICBcclxufVxyXG5cclxuIl19 */"
 
 /***/ }),
 
@@ -1314,6 +1330,247 @@ var DoceditPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/doctor/editchdetails/editchdetails.module.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/doctor/editchdetails/editchdetails.module.ts ***!
+  \**************************************************************/
+/*! exports provided: EditchdetailsPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditchdetailsPageModule", function() { return EditchdetailsPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _editchdetails_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editchdetails.page */ "./src/app/doctor/editchdetails/editchdetails.page.ts");
+/* harmony import */ var ionic_selectable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ionic-selectable */ "./node_modules/ionic-selectable/esm5/ionic-selectable.min.js");
+
+
+
+
+
+
+
+
+var routes = [
+    {
+        path: '',
+        component: _editchdetails_page__WEBPACK_IMPORTED_MODULE_6__["EditchdetailsPage"]
+    }
+];
+var EditchdetailsPageModule = /** @class */ (function () {
+    function EditchdetailsPageModule() {
+    }
+    EditchdetailsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+                ionic_selectable__WEBPACK_IMPORTED_MODULE_7__["IonicSelectableModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+            ],
+            declarations: [_editchdetails_page__WEBPACK_IMPORTED_MODULE_6__["EditchdetailsPage"]]
+        })
+    ], EditchdetailsPageModule);
+    return EditchdetailsPageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/doctor/editchdetails/editchdetails.page.html":
+/*!**************************************************************!*\
+  !*** ./src/app/doctor/editchdetails/editchdetails.page.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"back()\" >\n        <ion-icon name=\"arrow-back\"  ></ion-icon>\n      </ion-button>\n    </ion-buttons>\n    <ion-title>Edit Doctor Visits</ion-title>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content>\n \n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-sm\">\n          DoctorId: {{docter_id}}\n        </div>\n        <div class=\"col-sm\">\n          Name    :{{docname}}\n        </div>\n        <div class=\"col-sm\">\n          Patient:{{patient_id}}\n        </div>\n      </div>\n    </div>\n\n\n    \n  <form class=\"col s12 offset-s4\" [formGroup]=\"patientupdateForm\" (ngSubmit)=\"save(patientupdateForm)\">\n\n    <div class=\"container\">\n\n\n      <ion-row *ngIf=\"userData !=''\">\n        \n      <ion-item>\n       <ion-label position=\"floating\">Name</ion-label>\n      <ion-select  formControlName=\"child_name\" \n      >\n      <ion-select-option  value=\"\">{{full_name}}</ion-select-option>\n   \n      <ion-select-option *ngFor=\"let obj of userData\" value=\"{{obj.name }}\">{{obj.name }}</ion-select-option>\n      </ion-select>\n      </ion-item>\n  \n  </ion-row>\n\n\n  <ion-item >\n    <ion-label position=\"floating\">Reason for Visit</ion-label>\n    <ion-input formControlName=\"reason\"></ion-input>\n    </ion-item>\n   \n        <ion-item >\n      <ion-label position=\"floating\" >Blood Pressure</ion-label>\n      <ion-input formControlName=\"blood_pressure\"></ion-input>\n      </ion-item>\n \n        <ion-item >\n      <ion-label position=\"floating\" >Doctor's comments</ion-label>\n      <ion-input  formControlName=\"comments\" ></ion-input>\n      </ion-item>\n  \n   \n\n   \n        <ion-item >\n      <ion-label position=\"floating\">Medicine Prescribed</ion-label>\n      <ion-input formControlName=\"medicine_prescribed\"></ion-input>\n      </ion-item>\n\n    <ion-item >\n      <ion-label >Any Lab Test required?</ion-label>\n      <ion-checkbox  formControlName=\"labtest_required\" (ionChange)=\"check($event)\"></ion-checkbox>\n      \n      </ion-item>\n\n      <ion-item *ngIf=\"ch==true\">\n        <ion-label>Test Name</ion-label>\n        <ionic-selectable\n        formControlName=\"test_name\"\n          [(ngModel)]=\"port\"\n          [items]=\"testname\"\n          [isMultiple]=\"true\"\n\n          itemValueField=\"id\"\n          itemTextField=\"name\"\n          [canSearch]=\"true\"\n          (onChange)=\"portChange($event)\">\n        </ionic-selectable>\n      </ion-item>\n\n\n  \n      <ion-item lines=\"none\">\n <ion-button  color=\"primary\"  (click)=\"save(patientupdateForm)\"  shape=\"round\">Submit</ion-button>\n</ion-item>\n    </div>\n</form>\n\n</ion-content>\n"
+
+/***/ }),
+
+/***/ "./src/app/doctor/editchdetails/editchdetails.page.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/doctor/editchdetails/editchdetails.page.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2RvY3Rvci9lZGl0Y2hkZXRhaWxzL2VkaXRjaGRldGFpbHMucGFnZS5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/doctor/editchdetails/editchdetails.page.ts":
+/*!************************************************************!*\
+  !*** ./src/app/doctor/editchdetails/editchdetails.page.ts ***!
+  \************************************************************/
+/*! exports provided: EditchdetailsPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditchdetailsPage", function() { return EditchdetailsPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/auth.service */ "./src/app/auth.service.ts");
+
+
+
+
+
+
+var EditchdetailsPage = /** @class */ (function () {
+    function EditchdetailsPage(navParams, activatedRoute, modalController, formBuilder, nav, route, auth, menu) {
+        this.navParams = navParams;
+        this.activatedRoute = activatedRoute;
+        this.modalController = modalController;
+        this.formBuilder = formBuilder;
+        this.nav = nav;
+        this.route = route;
+        this.auth = auth;
+        this.menu = menu;
+        this.data = "";
+        this.editdc = this.navParams.get('test_id');
+        if (this.editdc != undefined) {
+            this.data = JSON.parse(this.editdc);
+            console.log("hi test_id", this.data);
+        }
+        // Print the parameter to the console. 
+        this.patientupdateForm = this.formBuilder.group({
+            blood_pressure: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            comments: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            medicine_prescribed: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            labtest_required: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            child_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            patient_id: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            docter_id: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            docter_name: [this.docname],
+            reason: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            test_name: [''],
+            _id: ['']
+        });
+        if (this.data != "") {
+            this.patientupdateForm.patchValue(this.data);
+            this.patientupdateForm.value.test_name = this.data.test_name.name;
+            this.port = this.data.test_name;
+        }
+        this.userData = JSON.parse(localStorage.getItem("userData"));
+        this.full_name = localStorage.getItem("full_name");
+        this.patient_id = localStorage.getItem("patient_id");
+        this.docname = this.userData.docter_name;
+        this.docter_id = this.userData.docter_id;
+        this.ch = false;
+        this.list();
+    }
+    EditchdetailsPage.prototype.history = function () {
+        this.route.navigateByUrl('/patentmedicalhistory');
+    };
+    EditchdetailsPage.prototype.ngOnInit = function () {
+        console.log("in patc");
+    };
+    EditchdetailsPage.prototype.save = function (patientupdateForm) {
+        var _this = this;
+        this.patientupdateForm.value.patient_id = this.patient_id;
+        this.patientupdateForm.value.docter_id = localStorage.getItem("docter_id");
+        this.auth.editdoc(patientupdateForm.value).subscribe(function (res) {
+            if (res.status == "success") {
+                if (res.response != "") {
+                    _this.auth.presentToast("updated successfully");
+                    _this.modalController.dismiss(); //this.dismiss()
+                    // localStorage.setItem("full_name",this.name);
+                    // this.router.navigateByUrl("/patientsearch");
+                }
+            }
+        }, function () {
+            _this.auth.presentToast("server failed, server detils not exits ");
+        });
+    };
+    EditchdetailsPage.prototype.view = function () {
+        this.route.navigateByUrl('/patentmedicalhistory');
+    };
+    EditchdetailsPage.prototype.list = function () {
+        var _this = this;
+        console.log("in patch");
+        this.auth.findchild({ patient_id: this.patient_id }).subscribe(function (res) {
+            if (res.status == "success") {
+                _this.userData = res.response;
+                // localStorage.setItem("full_name",this.name);
+                // this.router.navigateByUrl("/patientsearch");
+                _this.search();
+            }
+        }, function () {
+            _this.auth.presentToast("server failed, server detils not exits ");
+        });
+    };
+    EditchdetailsPage.prototype.check = function (e) {
+        console.log(e.detail);
+        this.ch = e.detail.checked;
+    };
+    EditchdetailsPage.prototype.portChange = function (event) {
+        var va = event.value;
+        var c = 0;
+        for (var i = 0; i < event.value; i++) {
+            if (va[i].relation == 0) {
+                c++;
+            }
+        }
+        //this.comp(event.value.id);
+        this.patientupdateForm.value.test_name = event.value;
+        console.log('port:', event.value);
+    };
+    EditchdetailsPage.prototype.testbyid = function () {
+        var _this = this;
+        this.auth.testbyid().subscribe(function (res) {
+            if (res.status == "success") {
+                if (res.response != "") {
+                    _this.testname = res.response;
+                }
+            }
+        }, function () {
+            _this.auth.presentToast("Login failed, Login detils not exits ");
+        });
+    };
+    EditchdetailsPage.prototype.search = function () {
+        var _this = this;
+        this.auth.lab_tests().subscribe(function (res) {
+            if (res.status == "success") {
+                if (res.response != "") {
+                    _this.testname = res.response;
+                }
+            }
+        }, function () {
+            _this.auth.presentToast("Login failed, Login detils not exits ");
+        });
+    };
+    EditchdetailsPage.prototype.back = function () {
+        this.modalController.dismiss(); //this.dismiss()
+    };
+    EditchdetailsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-editchdetails',
+            template: __webpack_require__(/*! ./editchdetails.page.html */ "./src/app/doctor/editchdetails/editchdetails.page.html"),
+            styles: [__webpack_require__(/*! ./editchdetails.page.scss */ "./src/app/doctor/editchdetails/editchdetails.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavController"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], src_app_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["MenuController"]])
+    ], EditchdetailsPage);
+    return EditchdetailsPage;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/editchild/editchild.module.ts":
 /*!***********************************************!*\
   !*** ./src/app/editchild/editchild.module.ts ***!
@@ -1384,7 +1641,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Edit Persons</io
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdGNoaWxkL0Q6XFxuZXdhcHBvbG9cXGFwcG9sby9zcmNcXGFwcFxcZWRpdGNoaWxkXFxlZGl0Y2hpbGQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCLEVBQUE7O0FBRWxCO0VBQ0UsZ0NBQWE7RUFDYixxQkFBbUIsRUFBQTs7QUFFckI7RUFDRSx5QkFBMEIsRUFBQTs7QUFFNUI7RUFDRSx5QkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2VkaXRjaGlsZC9lZGl0Y2hpbGQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmVycm9yLW1lc3NhZ2Vcclxue1xyXG4gIGNvbG9yOiByZWQ7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gIG1hcmdpbi10b3A6IDEwcHg7XHJcbn1cclxuaW9uLXRvb2xiYXJ7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjMTM4RDc1IWltcG9ydGFudCA7XHJcbiAgb3BhY2l0eToxIWltcG9ydGFudDsgXHJcbn1cclxuaW9uLXRpdGxle1xyXG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyBcclxufVxyXG5pb24tYnV0dG9uc3tcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgIFxyXG59XHJcbiJdfQ== */"
+module.exports = ".error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdGNoaWxkL0Q6XFxuZXdhcHBvbG9cXHNpZGR1c2FpLmdpdFxcdHJ1bmsvc3JjXFxhcHBcXGVkaXRjaGlsZFxcZWRpdGNoaWxkLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUVsQjtFQUNFLGdDQUFhO0VBQ2IscUJBQW1CLEVBQUE7O0FBRXJCO0VBQ0UseUJBQTBCLEVBQUE7O0FBRTVCO0VBQ0UseUJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9lZGl0Y2hpbGQvZWRpdGNoaWxkLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvci1tZXNzYWdlXHJcbntcclxuICBjb2xvcjogcmVkO1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tbGVmdDogMTBweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG59XHJcbmlvbi10b29sYmFye1xyXG4gIC0tYmFja2dyb3VuZDogIzEzOEQ3NSFpbXBvcnRhbnQgO1xyXG4gIG9wYWNpdHk6MSFpbXBvcnRhbnQ7IFxyXG59XHJcbmlvbi10aXRsZXtcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn1cclxuaW9uLWJ1dHRvbnN7XHJcbiAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7ICBcclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -1533,7 +1790,7 @@ module.exports = "<ion-header>\n  <ion-toolbar>\n      <ion-buttons slot=\"start
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdHBhdGllbnQvRDpcXG5ld2FwcG9sb1xcYXBwb2xvL3NyY1xcYXBwXFxlZGl0cGF0aWVudFxcZWRpdHBhdGllbnQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCLEVBQUE7O0FBR2xCO0VBQ0UsZ0NBQWE7RUFDYixxQkFBbUIsRUFBQTs7QUFFckI7RUFDRSx5QkFBMEIsRUFBQTs7QUFFNUI7RUFDRSx5QkFBMEIsRUFBQTs7QUFFNUI7RUFDRSx5QkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2VkaXRwYXRpZW50L2VkaXRwYXRpZW50LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvci1tZXNzYWdlXHJcbntcclxuICBjb2xvcjogcmVkO1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tbGVmdDogMTBweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG59XHJcblxyXG5pb24tdG9vbGJhcntcclxuICAtLWJhY2tncm91bmQ6ICMxMzhENzUhaW1wb3J0YW50IDtcclxuICBvcGFjaXR5OjEhaW1wb3J0YW50OyBcclxufVxyXG5pb24tdGl0bGV7XHJcbiAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59XHJcbmlvbi1idXR0b25ze1xyXG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyAgXHJcbn1cclxuaW9uLWljb257XHJcbiAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59Il19 */"
+module.exports = ".error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZWRpdHBhdGllbnQvRDpcXG5ld2FwcG9sb1xcc2lkZHVzYWkuZ2l0XFx0cnVuay9zcmNcXGFwcFxcZWRpdHBhdGllbnRcXGVkaXRwYXRpZW50LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUdsQjtFQUNFLGdDQUFhO0VBQ2IscUJBQW1CLEVBQUE7O0FBRXJCO0VBQ0UseUJBQTBCLEVBQUE7O0FBRTVCO0VBQ0UseUJBQTBCLEVBQUE7O0FBRTVCO0VBQ0UseUJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9lZGl0cGF0aWVudC9lZGl0cGF0aWVudC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXJyb3ItbWVzc2FnZVxyXG57XHJcbiAgY29sb3I6IHJlZDtcclxuICBmb250LXNpemU6IDE0cHg7XHJcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XHJcbiAgbWFyZ2luLXRvcDogMTBweDtcclxufVxyXG5cclxuaW9uLXRvb2xiYXJ7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjMTM4RDc1IWltcG9ydGFudCA7XHJcbiAgb3BhY2l0eToxIWltcG9ydGFudDsgXHJcbn1cclxuaW9uLXRpdGxle1xyXG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyBcclxufVxyXG5pb24tYnV0dG9uc3tcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgIFxyXG59XHJcbmlvbi1pY29ue1xyXG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyBcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -1581,7 +1838,8 @@ var EditpatientPage = /** @class */ (function () {
                 { type: 'required', message: 'sex is required.' },
             ],
             'email': [
-                { type: 'required', message: 'phone is required.' }
+                { type: 'required', message: 'Email id is required.' },
+                { type: 'pattern', message: 'please enter valid email' }
             ],
             'date_of_birth': [
                 { type: 'required', message: 'date_of_birth is required.' },
@@ -1604,7 +1862,10 @@ var EditpatientPage = /** @class */ (function () {
         this.validations_form = formBuilder.group({
             full_name: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             date_of_birth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            email: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].compose([
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required,
+                    _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'),
+                ])],
             address: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             city: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             state: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
@@ -1648,6 +1909,127 @@ var EditpatientPage = /** @class */ (function () {
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]])
     ], EditpatientPage);
     return EditpatientPage;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/errordlog.ts":
+/*!******************************!*\
+  !*** ./src/app/errordlog.ts ***!
+  \******************************/
+/*! exports provided: ErrordialogServicce */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrordialogServicce", function() { return ErrordialogServicce; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+var ErrordialogServicce = /** @class */ (function () {
+    function ErrordialogServicce(modalController, alertController) {
+        this.modalController = modalController;
+        this.alertController = alertController;
+        this.isDialogOpen = false;
+    }
+    ErrordialogServicce.prototype.openDialog = function (data) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var alert;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(JSON.stringify(data));
+                        return [4 /*yield*/, this.alertController.create({
+                                header: 'Alert',
+                                subHeader: data.status,
+                                message: (data.reason.err) ? data.reason.err : data.reason.error,
+                                buttons: ['OK']
+                            })];
+                    case 1:
+                        alert = _a.sent();
+                        return [4 /*yield*/, alert.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ErrordialogServicce = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
+    ], ErrordialogServicce);
+    return ErrordialogServicce;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/http-config-interceptor.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/http-config-interceptor.service.ts ***!
+  \****************************************************/
+/*! exports provided: HttpConfigInterceptorService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HttpConfigInterceptorService", function() { return HttpConfigInterceptorService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _errordlog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./errordlog */ "./src/app/errordlog.ts");
+
+
+
+
+
+
+var HttpConfigInterceptorService = /** @class */ (function () {
+    function HttpConfigInterceptorService(errorDialogService) {
+        this.errorDialogService = errorDialogService;
+    }
+    HttpConfigInterceptorService.prototype.intercept = function (request, next) {
+        var _this = this;
+        var token = localStorage.getItem('token');
+        if (token) {
+            request = request.clone({ headers: request.headers.set('Authorization', 'Bearer ' + token) });
+        }
+        if (!request.headers.has('Content-Type')) {
+            request = request.clone({ headers: request.headers.set('Content-Type', 'application/json') });
+        }
+        request = request.clone({ headers: request.headers.set('Accept', 'application/json') });
+        return next.handle(request).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (event) {
+            if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpResponse"]) {
+                console.log('event--->>>', event);
+                // this.errorDialogService.openDialog(event);
+            }
+            return event;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
+            var data = {};
+            data = {
+                reason: error && error.error.message && error.error.message ? error.error.message : '',
+                status: error.status
+            };
+            _this.errorDialogService.openDialog(data);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(error);
+        }));
+    };
+    HttpConfigInterceptorService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_errordlog__WEBPACK_IMPORTED_MODULE_5__["ErrordialogServicce"]])
+    ], HttpConfigInterceptorService);
+    return HttpConfigInterceptorService;
 }());
 
 
@@ -1724,7 +2106,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n      <ion-title>Edit lab</io
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGFicy9lZGl0bGFiL0Q6XFxuZXdhcHBvbG9cXGFwcG9sby9zcmNcXGFwcFxcbGFic1xcZWRpdGxhYlxcZWRpdGxhYi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFRSxVQUFVO0VBQ1YsZUFBZTtFQUNmLGlCQUFpQjtFQUNqQixnQkFBZ0IsRUFBQTs7QUFFbEI7RUFDRSxnQ0FBYTtFQUNiLHFCQUFtQixFQUFBOztBQUVyQjtFQUNFLHlCQUEwQixFQUFBOztBQUU1QjtFQUNFLHlCQUEwQixFQUFBOztBQUU1QjtFQUNFLHlCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbGFicy9lZGl0bGFiL2VkaXRsYWIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmVycm9yLW1lc3NhZ2Vcclxue1xyXG4gIGNvbG9yOiByZWQ7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gIG1hcmdpbi10b3A6IDEwcHg7XHJcbn1cclxuaW9uLXRvb2xiYXJ7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjMTM4RDc1IWltcG9ydGFudCA7XHJcbiAgb3BhY2l0eToxIWltcG9ydGFudDsgXHJcbn1cclxuaW9uLXRpdGxle1xyXG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyBcclxufVxyXG5pb24tYnV0dG9uc3tcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgIFxyXG59XHJcbmlvbi1pY29ue1xyXG4gIGNvbG9yOiAjZmZmZmZmICFpbXBvcnRhbnQgOyAgXHJcblxyXG59XHJcbiJdfQ== */"
+module.exports = ".error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGFicy9lZGl0bGFiL0Q6XFxuZXdhcHBvbG9cXHNpZGR1c2FpLmdpdFxcdHJ1bmsvc3JjXFxhcHBcXGxhYnNcXGVkaXRsYWJcXGVkaXRsYWIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCLEVBQUE7O0FBRWxCO0VBQ0UsZ0NBQWE7RUFDYixxQkFBbUIsRUFBQTs7QUFFckI7RUFDRSx5QkFBMEIsRUFBQTs7QUFFNUI7RUFDRSx5QkFBMEIsRUFBQTs7QUFFNUI7RUFDRSx5QkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL2xhYnMvZWRpdGxhYi9lZGl0bGFiLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvci1tZXNzYWdlXHJcbntcclxuICBjb2xvcjogcmVkO1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tbGVmdDogMTBweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG59XHJcbmlvbi10b29sYmFye1xyXG4gIC0tYmFja2dyb3VuZDogIzEzOEQ3NSFpbXBvcnRhbnQgO1xyXG4gIG9wYWNpdHk6MSFpbXBvcnRhbnQ7IFxyXG59XHJcbmlvbi10aXRsZXtcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn1cclxuaW9uLWJ1dHRvbnN7XHJcbiAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7ICBcclxufVxyXG5pb24taWNvbntcclxuICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgIFxyXG5cclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -1902,7 +2284,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n    <ion-buttons slot=\"start
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".lead {\n  font-size: 13px;\n  padding-left: 2px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n.error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-buttons {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGlwaWRwcm9maWxlL0Q6XFxuZXdhcHBvbG9cXGFwcG9sby9zcmNcXGFwcFxcbGlwaWRwcm9maWxlXFxsaXBpZHByb2ZpbGUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0EsZUFBZTtFQUNmLGlCQUFpQixFQUFBOztBQUVqQjtFQUNJLGdDQUFhO0VBQ2IscUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0kseUJBQTBCLEVBQUE7O0FBRTlCO0VBQ0kseUJBQTBCLEVBQUE7O0FBRTlCO0VBRUUsVUFBVTtFQUNWLGVBQWU7RUFDZixpQkFBaUI7RUFDakIsZ0JBQWdCLEVBQUE7O0FBRWxCO0VBQ0kseUJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9saXBpZHByb2ZpbGUvbGlwaWRwcm9maWxlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sZWFke1xyXG5mb250LXNpemU6IDEzcHg7XHJcbnBhZGRpbmctbGVmdDogMnB4O1xyXG59XHJcbmlvbi10b29sYmFye1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMTM4RDc1IWltcG9ydGFudCA7XHJcbiAgICBvcGFjaXR5OjEhaW1wb3J0YW50OyBcclxufVxyXG5pb24tdGl0bGV7XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn1cclxuaW9uLWljb257XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn1cclxuLmVycm9yLW1lc3NhZ2Vcclxue1xyXG4gIGNvbG9yOiByZWQ7XHJcbiAgZm9udC1zaXplOiAxNHB4O1xyXG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xyXG4gIG1hcmdpbi10b3A6IDEwcHg7XHJcbn1cclxuaW9uLWJ1dHRvbnN7XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgIFxyXG4gIH1cclxuIl19 */"
+module.exports = ".lead {\n  font-size: 13px;\n  padding-left: 2px; }\n\nion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-icon {\n  color: #ffffff !important; }\n\n.error-message {\n  color: red;\n  font-size: 14px;\n  margin-left: 10px;\n  margin-top: 10px; }\n\nion-buttons {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbGlwaWRwcm9maWxlL0Q6XFxuZXdhcHBvbG9cXHNpZGR1c2FpLmdpdFxcdHJ1bmsvc3JjXFxhcHBcXGxpcGlkcHJvZmlsZVxcbGlwaWRwcm9maWxlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNBLGVBQWU7RUFDZixpQkFBaUIsRUFBQTs7QUFFakI7RUFDSSxnQ0FBYTtFQUNiLHFCQUFtQixFQUFBOztBQUV2QjtFQUNJLHlCQUEwQixFQUFBOztBQUU5QjtFQUNJLHlCQUEwQixFQUFBOztBQUU5QjtFQUVFLFVBQVU7RUFDVixlQUFlO0VBQ2YsaUJBQWlCO0VBQ2pCLGdCQUFnQixFQUFBOztBQUVsQjtFQUNJLHlCQUEwQixFQUFBIiwiZmlsZSI6InNyYy9hcHAvbGlwaWRwcm9maWxlL2xpcGlkcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGVhZHtcclxuZm9udC1zaXplOiAxM3B4O1xyXG5wYWRkaW5nLWxlZnQ6IDJweDtcclxufVxyXG5pb24tdG9vbGJhcntcclxuICAgIC0tYmFja2dyb3VuZDogIzEzOEQ3NSFpbXBvcnRhbnQgO1xyXG4gICAgb3BhY2l0eToxIWltcG9ydGFudDsgXHJcbn1cclxuaW9uLXRpdGxle1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59XHJcbmlvbi1pY29ue1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59XHJcbi5lcnJvci1tZXNzYWdlXHJcbntcclxuICBjb2xvcjogcmVkO1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tbGVmdDogMTBweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG59XHJcbmlvbi1idXR0b25ze1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7ICBcclxuICB9XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -2163,7 +2545,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\newappolo\appolo\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\newappolo\siddusai.git\trunk\src\main.ts */"./src/main.ts");
 
 
 /***/ })

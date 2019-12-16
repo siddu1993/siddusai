@@ -69,7 +69,7 @@ module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-buttons slot=\"s
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-menu-button {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGVyc29uc2xpc3QvRDpcXG5ld2FwcG9sb1xcYXBwb2xvL3NyY1xcYXBwXFxwZXJzb25zbGlzdFxccGVyc29uc2xpc3QucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0NBQWE7RUFDYixxQkFBbUIsRUFBQTs7QUFFdkI7RUFDSSx5QkFBMEIsRUFBQTs7QUFFOUI7RUFDSSx5QkFBMEIsRUFBQTs7QUFFOUI7RUFDSSx5QkFBMEIsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3BlcnNvbnNsaXN0L3BlcnNvbnNsaXN0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10b29sYmFye1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjMTM4RDc1IWltcG9ydGFudCA7XHJcbiAgICBvcGFjaXR5OjEhaW1wb3J0YW50OyBcclxufVxyXG5pb24tdGl0bGV7XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcbn1cclxuaW9uLWJ1dHRvbnN7XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgICBcclxufVxyXG5pb24tbWVudS1idXR0b257XHJcbiAgICBjb2xvcjogI2ZmZmZmZiAhaW1wb3J0YW50IDsgXHJcblxyXG59XHJcbiJdfQ== */"
+module.exports = "ion-toolbar {\n  --background: #138D75!important ;\n  opacity: 1 !important; }\n\nion-title {\n  color: #ffffff !important; }\n\nion-buttons {\n  color: #ffffff !important; }\n\nion-menu-button {\n  color: #ffffff !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGVyc29uc2xpc3QvRDpcXG5ld2FwcG9sb1xcc2lkZHVzYWkuZ2l0XFx0cnVuay9zcmNcXGFwcFxccGVyc29uc2xpc3RcXHBlcnNvbnNsaXN0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGdDQUFhO0VBQ2IscUJBQW1CLEVBQUE7O0FBRXZCO0VBQ0kseUJBQTBCLEVBQUE7O0FBRTlCO0VBQ0kseUJBQTBCLEVBQUE7O0FBRTlCO0VBQ0kseUJBQTBCLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9wZXJzb25zbGlzdC9wZXJzb25zbGlzdC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tdG9vbGJhcntcclxuICAgIC0tYmFja2dyb3VuZDogIzEzOEQ3NSFpbXBvcnRhbnQgO1xyXG4gICAgb3BhY2l0eToxIWltcG9ydGFudDsgXHJcbn1cclxuaW9uLXRpdGxle1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG59XHJcbmlvbi1idXR0b25ze1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7ICAgXHJcbn1cclxuaW9uLW1lbnUtYnV0dG9ue1xyXG4gICAgY29sb3I6ICNmZmZmZmYgIWltcG9ydGFudCA7IFxyXG5cclxufVxyXG4iXX0= */"
 
 /***/ }),
 
@@ -109,17 +109,16 @@ var PersonslistPage = /** @class */ (function () {
     };
     PersonslistPage.prototype.list = function () {
         var _this = this;
+        this.userData = '';
         // this.labupdateForm .value.docter_id=this.docter_id;
         this.auth.findchild({ patient_id: this.patient_id }).subscribe(function (res) {
             if (res.status == "success") {
-                if (res.response != "") {
-                    _this.userData = res.response;
-                    // localStorage.setItem("full_name",this.name);
-                    // this.router.navigateByUrl("/patientsearch");
-                }
+                _this.userData = (res.response).reverse();
+                // localStorage.setItem("full_name",this.name);
+                // this.router.navigateByUrl("/patientsearch");
             }
         }, function () {
-            alert("Login failed, Login detils not exits ");
+            alert("server failed, server details not exits ");
         });
     };
     PersonslistPage.prototype.edit = function (obj) {
@@ -184,14 +183,12 @@ var PersonslistPage = /** @class */ (function () {
         // this.labupdateForm .value.docter_id=this.docter_id;
         this.auth.childremove({ _id: item._id }).subscribe(function (res) {
             if (res.status == "success") {
-                if (res.response != "") {
-                    _this.list();
-                    _this.auth.presentToast("child person removed");
-                    // localStorage.setItem("full_name",this.name);
-                    // this.router.navigateByUrl("/patientsearch");
-                }
+                _this.list();
+                _this.auth.presentToast("child person removed");
+                // localStorage.setItem("full_name",this.name);
+                // this.router.navigateByUrl("/patientsearch");
             }
-        }, function () {
+        }, function (err) {
             _this.auth.presentToast("server failed");
         });
     };
