@@ -13,8 +13,10 @@
 
 <ion-content>
    
-
-    <ion-card class="cardsize" *ngFor="let item of obj">
+  <div *ngFor="let item of obj" >
+   
+    <ion-card class="cardsize" *ngIf="item.unit!='undefined undefined'">
+    
         <ion-item lines="none">
           <h6 slot="start">{{item.name}}</h6>
           <h6 slot="end">{{item.unit}}</h6>
@@ -25,12 +27,12 @@
           <small slot="end"><p>{{item.method}}</p></small>
         </ion-item>
     
-         <!--   <ion-item lines="none">
-          <h6 slot="start">Lab Test</h6>
-          <h6 slot="end">{{item.test_name}}</h6>
+           <ion-item lines="none"   *ngIf="item.method=='Other Method'">
+          <h6 slot="start">Method Name</h6>
+          <h6 slot="end">{{item.other_method}}</h6>
         </ion-item>
     
-        <ion-item class="activated" lines="none">
+       <!--  <ion-item class="activated" lines="none">
           <h6 slot="start">Result</h6>
          <u slot="end" (click)="view(item)"> <h6 >View</h6></u>
         </ion-item>-->
@@ -38,7 +40,7 @@
       
       </ion-card>  
 
-
+    </div>
 
 
 

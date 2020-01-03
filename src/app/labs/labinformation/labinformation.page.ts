@@ -14,6 +14,7 @@ export class LabinformationPage implements OnInit {
   phone_no: any;
   name: any;
   patient_id: any;
+  pho: string;
 
   constructor(public alertController: AlertController,public modalController: ModalController,public route:Router,public auth:AuthService,public menu: MenuController) { }
 
@@ -35,7 +36,8 @@ export class LabinformationPage implements OnInit {
           //labtestupdate
         }
         else{
-          this.auth.presentToast("patient not exists");
+          this.auth.presentToast("patient not exists ");
+          this.pho="1"
 
         }
      
@@ -122,5 +124,7 @@ export class LabinformationPage implements OnInit {
     await alert.present();
   
 }
-
+phone(){
+  this.pho="0";
+}
 }

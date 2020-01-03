@@ -23,12 +23,13 @@ export class ChckpdetailsPage implements OnInit {
   editdc: any;
   data: any;
   port: any;
+  select: boolean;
   
   constructor(private activatedRoute: ActivatedRoute,public modalController:ModalController, private formBuilder: FormBuilder,public nav:NavController,
     public route:Router,public auth:AuthService,public menu: MenuController) { 
 
       this. data="";
-     
+      this.select=true;
       this.activatedRoute.queryParams.subscribe(params => {
         this.editdc = params['test_id'];
         if(this.editdc!=undefined)
@@ -65,8 +66,6 @@ this.port=this.data.test_name;
       docter_name:[this.docname],
       reason:['', Validators.required],
       test_name:['']
-    
-
   });
 
 
@@ -93,6 +92,12 @@ this.list();
  
   }
   save(patientupdateForm){
+    if(this.patientupdateForm.value.labtest_required==true && this.patientupdateForm.value.test_name==""){
+      this.auth.presentToast('please select test name');
+   }
+          else{
+
+          
     this.patientupdateForm.value.patient_id=this.patient_id;
     this.patientupdateForm.value.docter_id=localStorage.getItem("docter_id");
     this.auth.doctorvisit(patientupdateForm.value).subscribe(res => {
@@ -112,6 +117,7 @@ this.list();
       }
     }
      );
+  }
    }
    view(){
     this.route.navigateByUrl('/patentmedicalhistory',);
@@ -149,15 +155,16 @@ this.list();
   
       
     }) {
+      let arr=[];
       let va=event.value;
       let c=0;
       for(let i=0;i<event.value;i++)
+      {  
+      if(arr.includes("0"))
       {
-      if(va[i].relation==0 )
-      {
-        c++
+        arr.push(va[i].relation);
       }
-    }
+      }
       //this.comp(event.value.id);
       this.patientupdateForm.value.test_name=event.value;
 
@@ -184,7 +191,55 @@ this.list();
        );
      }
 
+    //  check1(e)
+    //  {
+    //   this.auth.lab_tests().subscribe(res => {
+        
+    //     if (res.status == "success") {
+    //       if (res.response != "") {
+         
+    //       this.testname=res.response;
+    //       var arr=[];
+    //       if(e.detail.checked==true)
+    //       {
+    //         this.port=[];
+    //         this.select=true;
+    //         for(let obj of this.testname)
+    //         {
+    //            if(obj.relation!="0")
+    //            {
+    //             arr.push({name:obj.name,id:obj.id,relation:obj.relation});
+               
+    //            }
+    //         }
+    //         this.testname=arr;
+    //       }
+    //       if(e.detail.checked==false)
+    //       {
+    //         this.port=[];
 
+    //         this.select=false;
+    //         for(let obj of this.testname)
+    //         {
+    //            if(obj.relation=="0")
+    //            {
+    //             arr.push({name:obj.name,id:obj.id,relation:obj.relation});
+    //            }
+    //         }
+    //         this.testname=arr;
+    //       }
+        
+          
+    //       }
+     
+    //     }
+    //   }
+    //    );
+       
+    //    console.log(e);
+      
+     
+    //  }
   
      back()
      {

@@ -10,28 +10,171 @@
 </ion-header>
 
 <ion-content>
-<ion-card class="cardsize" *ngFor="let item of result.data">
-    <ion-item lines="none">
-      <h6 slot="start">{{item.name}}</h6>
-      <h6 slot="end">{{item.unit}}</h6>
-    </ion-item>
-  
-    <ion-item class="activated" lines="none">
-      <h6 slot="start">method</h6>
-      <small slot="end"><p>{{item.method}}</p></small>
-    </ion-item>
+   
+  <div *ngFor="let item of result.data" >
+   
+    <ion-card class="cardsize" *ngIf="item.unit!='undefined undefined'">
+    
+        <ion-item lines="none">
+          <h6 slot="start">{{item.name}}</h6>
+          <h6 slot="end">{{item.unit}}</h6>
+        </ion-item>
+      
+        <ion-item class="activated" lines="none">
+          <h6 slot="start">method</h6>
+          <small slot="end"><p>{{item.method}}</p></small>
+        </ion-item>
+    
+           <ion-item lines="none"   *ngIf="item.method=='Other Method'">
+          <h6 slot="start">Method Name</h6>
+          <h6 slot="end">{{item.other_method}}</h6>
+        </ion-item>
+    
+       <!--  <ion-item class="activated" lines="none">
+          <h6 slot="start">Result</h6>
+         <u slot="end" (click)="view(item)"> <h6 >View</h6></u>
+        </ion-item>-->
+      
+      
+      </ion-card>  
 
-     <!--   <ion-item lines="none">
-      <h6 slot="start">Lab Test</h6>
-      <h6 slot="end">{{item.test_name}}</h6>
-    </ion-item>
+    </div>
 
-    <ion-item class="activated" lines="none">
-      <h6 slot="start">Result</h6>
-     <u slot="end" (click)="view(item)"> <h6 >View</h6></u>
-    </ion-item>-->
-  
-  
-  </ion-card>  
+
+
+    <!-- <div class="table-responsive">
+       
+    <table class="table"  >
+        <thead>
+          <tr>
+            <th scope="col">Test Name</th>
+            <th scope="col">Result</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Bio Ref. Range</th>
+            <th scope="col">Method</th>
+          </tr>
+        </thead>
+
+   
+
+
+        <tbody>
+          <tr>
+            <th scope="row">{{obj.name}}</th>
+            <td>{{obj.total_cholestrol}}</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">Triglycerides</th>
+            <td>{{obj.tri_glycerides}}</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">Hdl</th>
+            <td>{{obj.hdl}}</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+              <th scope="row">No Hdl</th>
+              <td>{{obj.no_hdl}}</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">Ldl</th>
+                <td>{{obj.ldl }}</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                  <th scope="row">Vldl</th>
+                  <td>{{obj.vldl}}</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">Chol/Hdl Ratio</th>
+                    <td>{{obj.chol_ratio}}</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td>@mdo</td>
+                  </tr>
+              
+        </tbody>
+      </table>
+      </div>
+      <p class="lead">
+         <b>Reference Interval as per National Cholestrol Education (NCEP) Adult Treatment Report</b>
+        </p>
+
+      <div class="table-responsive">
+       
+          <table class="table"  >
+              <thead>
+                <tr>
+                    <th scope="col"></th>
+                  <th scope="col">Desirable</th>
+                  <th scope="col">BorderLine</th>
+                  <th scope="col">High</th>
+                  <th scope="col">Very High</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Total Cholestrol</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">Triglycerides</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">Ldl</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td>@mdo</td>
+                  </tr>
+                <tr>
+                  <th scope="row">Hdl</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                  <td>@mdo</td>
+                </tr>
+              
+                
+                    <tr>
+                        <th scope="row">Non Hdl</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>@mdo</td>
+                      </tr>
+                     
+                    
+              </tbody>
+            </table>
+            </div>
+ -->
+
+
+
 
 </ion-content>

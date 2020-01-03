@@ -58,18 +58,27 @@
   
         
         </ion-card>
-        <div>
+        <div padding-left>
           <h6 center>Update Patient's Record</h6>
         </div>
    <ion-item>
      <ion-label>
        Patient's Id :
      </ion-label>
-     <ion-input [(ngModel)]="phone_no" placeholder="phone_no">
+     <ion-input [(ngModel)]="phone_no" placeholder="phone_no" (input)="phone()" >
   
      </ion-input>
-     <ion-button (click)="search()">Search</ion-button>
    </ion-item>
-    
+   <div class="error-message" *ngIf="pho=='1'">
+    <ion-icon name="information-circle-outline"></ion-icon>  invalid phone number
+  </div>
+  <ion-item lines="none">
+  
+     
+   
+    <ion-button (click)="search()">Search</ion-button>
+  
+  </ion-item>
+  
   
 </ion-content>

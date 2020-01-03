@@ -80,18 +80,17 @@
     <ion-item >
       <ion-label >Any Lab Test required?</ion-label>
       <ion-checkbox  formControlName="labtest_required" (ionChange)="check($event)"></ion-checkbox>
-      
-      </ion-item>
+    </ion-item>
 
+    
       <ion-item *ngIf="ch==true">
         <ion-label>Test Name</ion-label>
         <ionic-selectable
-        formControlName="test_name"
+          formControlName="test_name"
           [(ngModel)]="port"
           [items]="testname"
-          [isMultiple]="true"
-
-          itemValueField="id"
+          [isMultiple]=select
+          itemValueField="_id"
           itemTextField="name"
           [canSearch]="true"
           (onChange)="portChange($event)">

@@ -69,10 +69,20 @@
    <ion-label>
      Patient's Id :
    </ion-label>
-   <ion-input [(ngModel)]="phone_no" placeholder="phone no">
-
+   <ion-input [(ngModel)]="phone_no" placeholder="phone no" (input)="phone()" type="number">
+   
    </ion-input>
-   <ion-button (click)="search()">Search</ion-button>
+ 
  </ion-item>
-  
+ <div class="error-message" *ngIf="pho=='1'">
+  <ion-icon name="information-circle-outline"></ion-icon>  invalid phone number
+</div>
+<ion-item lines="none">
+
+   
+ 
+  <ion-button (click)="search()">Search</ion-button>
+
+</ion-item>
+
 </ion-content>

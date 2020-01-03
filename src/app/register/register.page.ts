@@ -18,6 +18,7 @@ export class RegisterPage implements OnInit {
 
   constructor(public modalController:ModalController,public auth:AuthService,public formBuilder: FormBuilder,
     public nav:NavController) { 
+     
     // this.id= navParams.get("value");
     // console.log(this.id);
    this.validations_form = formBuilder.group({
@@ -147,4 +148,63 @@ this.nav.pop();
    });
     
   }
+
+
+
+
+
+//   vs()
+//   {
+//     for(let i=0;i<100;i++)
+//     {
+
+
+//     this.auth.newpatient({ full_name: "venu",
+//     "date_of_birth": "2020-01-02T11:32:17.382+05:30",
+//     email: "venkat@gmail.com",
+//     address: "65-7-6",
+//     city: "rjy",
+//     state: "ap",
+//     sex: "Male",
+//     age: 26,
+//     phone_no: 120+i,
+//     password: "123456",
+//     question: "What is your favorite movie ?",
+//     answer: "rjy",
+//     insurance: true}).subscribe(res => {
+//       this.result=res;
+      
+//       if (res.status == 'success') {
+//         console.log("reg in success");
+
+//         this.auth.login({phone_no: 120+i, password: "123456"}).subscribe(res => {
+    
+//           if (res.status == "success") {
+//             if (res.response != "") {
+//               console.log("log in success");
+//             //this.userData=res.response;
+//            // this.auth.presentToast("login successfull");
+//            // this.nav.pop();
+    
+           
+           
+           
+            
+            
+//            // location.reload();
+    
+//            // this.route.navigateByUrl('/list');
+//           }
+         
+//         }
+       
+//         });
+//        }
+     
+     
+//   });
+// }
+ // }
+
+ 
 }

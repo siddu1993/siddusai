@@ -14,26 +14,26 @@
   <ion-content>
     <ion-list>
  
-      <ion-card class="cardsize" *ngFor="let userData of userData">
+      <ion-card class="cardsize" *ngFor="let user of usersdata">
         <ion-item lines="none">
           <h6 slot="start">Patient id</h6>
-          <h6 slot="end">{{userData.patient_id}}</h6>
+          <h6 slot="end">{{user.patient_id}}</h6>
         </ion-item>
       
         <ion-item class="activated" lines="none">
           <!-- <ion-icon name="wifi" slot="start"></ion-icon> -->
           <h6 slot="start">Name</h6>
-          <small slot="end">{{ userData.name}}</small>
+          <small slot="end">{{ user.name}}</small>
         </ion-item>
   
         <ion-item lines="none">
           <h6 slot="start">Age</h6>
-          <h6 slot="end">{{userData.age}}</h6>
+          <h6 slot="end">{{user.age}}</h6>
         </ion-item>
   
         <ion-item class="activated" lines="none">
           <h6 slot="start">Gender</h6>
-          <h6 slot="end">{{ userData.gender}} </h6>
+          <h6 slot="end">{{ user.gender}} </h6>
         </ion-item>
     
        
@@ -43,10 +43,10 @@
         <ion-item lines="none">
   
   
-            <ion-text (click)="edit(userData)" slot="start" color="primary">
+            <ion-text (click)="edit(user)" slot="start" color="primary">
                 <h6><u>Edit</u></h6>
               </ion-text>
-              <ion-text (click)="childremove(userData)" slot="end" color="primary">
+              <ion-text (click)="childremove(user)" slot="end" color="primary">
                 <h6><u>delete</u></h6>
               </ion-text>
               

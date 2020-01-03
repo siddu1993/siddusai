@@ -24,6 +24,8 @@ export class LoginPage implements OnInit {
   shift: string;
   userData: any;
   sel: any;
+  pass: number;
+  use: number;
   constructor(public nav:NavController,public route:Router,public auth:AuthService,public formBuilder: FormBuilder,public menu: MenuController) { 
     this.menu.enable(false);
     this.sel=1;
@@ -61,9 +63,9 @@ this.validations_lab  =  this.formBuilder.group({
   }
   validation_messages = {
     'phone_no': [
-      { type: 'required', message: 'patient_id is required.' },
-      { type: 'minlength', message: 'patient_id must be at least 8 characters long.' },
-      { type: 'maxlength', message: 'patient_id cannot be more than 12 numbers.' },
+      { type: 'required', message: 'phone_no is required.' },
+      { type: 'minlength', message: 'phone_no must be at least 8 characters long.' },
+      { type: 'maxlength', message: 'phone_no cannot be more than 12 numbers.' },
     ],
     'password': [
       { type: 'required', message: 'password is required.' },
@@ -165,10 +167,24 @@ this.validations_lab  =  this.formBuilder.group({
       this.auth.presentToast(res.message);
     }
      }, (err) => {
-       console.log(err)
-      this.auth.presentToast("username or password incorrect");
+       console.log(99,err)
+
+       if(err.error.message.err=="No account exists")
+       {
+        this.use=1;
+       }
+       else{
+      this.pass=1;
+       }
+     
 
     });
+  }
+  see(){
+    this.pass=0;
+  }
+  user(){
+    this.use=0;
   }
   reg()
   {
@@ -178,5 +194,7 @@ this.validations_lab  =  this.formBuilder.group({
   change(e){
     console.log(e);
     this.sel=e.detail.value;
+    this.pass=0;
+    this.use=0;
   }
 }

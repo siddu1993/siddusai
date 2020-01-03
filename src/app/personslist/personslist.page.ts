@@ -11,24 +11,25 @@ import { EditchildPage } from '../editchild/editchild.page';
 })
 export class PersonslistPage implements OnInit {
   patient_id: string;
-  userData: any;
+  usersdata: any;
 
   constructor(public alertController:AlertController,public modalController:ModalController,public nav:NavController,public auth:AuthService,public formBuilder: FormBuilder) {
     this. patient_id=localStorage.getItem('patient_id');
-this.list();
    }
 
   ngOnInit() {
+    this.list();
+
   }
   list()
   {
-    this.userData='';
+   // this.userData='';
      // this.labupdateForm .value.docter_id=this.docter_id;
       this.auth.findchild( {patient_id:this. patient_id}).subscribe(res => {
         
         if (res.status == "success") {
      
-         this.userData=(res.response).reverse();
+         this.usersdata=res.response;
 
            // localStorage.setItem("full_name",this.name);
            // this.router.navigateByUrl("/patientsearch");
@@ -86,13 +87,13 @@ this.list();
   remove(item)
   {
      // this.labupdateForm .value.docter_id=this.docter_id;
-      this.auth.childremove( {_id:item._id}).subscribe(res => {
+      this.auth.childremove({_id:item._id}).subscribe(res => {
         
         if (res.status == "success") {
-            this.list();
+           // this.list();
 
       this.auth.presentToast("child person removed")
-
+      this.list();
            // localStorage.setItem("full_name",this.name);
            // this.router.navigateByUrl("/patientsearch");
           

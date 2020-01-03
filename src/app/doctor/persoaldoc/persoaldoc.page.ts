@@ -16,6 +16,7 @@ export class PersoaldocPage implements OnInit {
   userData: any;
   phone_no: any;
   docter_phone: any;
+  pho: string;
 
   constructor(public modalController:ModalController,public alertController:AlertController,
     public route:Router,public auth:AuthService,public menu: MenuController) { 
@@ -41,8 +42,8 @@ export class PersoaldocPage implements OnInit {
           this.route.navigateByUrl("/chckpdetails");
         }
         else{
-          this.auth.presentToast("patient not exits ");
-
+          this.auth.presentToast("patient not exists ");
+          this.pho="1"
         }
      
       }
@@ -118,5 +119,8 @@ async back() {
 
   await alert.present();
 
+}
+phone(){
+  this.pho="0"
 }
 }

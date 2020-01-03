@@ -152,27 +152,21 @@ if(this.child_name==undefined)
         }
         );
       }
-      listbyid(test_id,list_id,sts,docter_name,lab_name)
+      listbyid(test_id,list_id,sts,docter_name,lab_name,child_name)
       {
          // this.labupdateForm .value.docter_id=this.docter_id;
-          this.auth.testbyid( {test_id:test_id}).subscribe(res => {
+          this.auth.testbyid( {test:test_id}).subscribe(res => {
             
             if (res.status == "success") {
               if (res.response != "") {
              this.test_res=res.response;
              console.log("test_id",this.test_res)
 
-            //  condition: true
-            //  name: "Hb or Hbg(Hemoblobin)"
-            //  relation: "5ddf6fc8e8c7682140a140e5"
-            //  __v: 0
-            //  _id: "5ddf72b686eac72658cd0463"
 
 
-             this.route.navigate(['/labtestupdate'],{ queryParams:{test_id:JSON.stringify(this.test_res),_id:list_id,sts:sts,"docter_name":docter_name,"lab_name":lab_name}});
+             this.route.navigate(['/labtestupdate'],{ queryParams:{test_id:JSON.stringify(this.test_res),_id:list_id,sts:sts,"docter_name":docter_name,"lab_name":lab_name,"child_name":child_name}});
 
-               // localStorage.setItem("full_name",this.name);
-               // this.router.navigateByUrl("/patientsearch");
+
               }
            
             }
@@ -193,19 +187,19 @@ if(this.child_name==undefined)
       {
        
 
-        this.test_name=e.test_name;
-        console.log("66",this.test_name) 
-        if(this.test_name[0].relation==0)
-        {
-          console.log("66",this.test_name[0].relation) 
+        // this.test_name=e.test_name;
+        // console.log("66",this.test_name) 
+        // if(this.test_name[0].relation==0)
+        // {
+        //   console.log("66",this.test_name[0].relation) 
 
-          this.listbyid(this.test_name[0].id,e._id,e.status,e.docter_name,localStorage.getItem('name'));
+          this.listbyid(e.test_name,e._id,e.status,e.docter_name,localStorage.getItem('name'),e.child_name);
 
-        }
-        else{
-          this.route.navigate(['/labtestupdate'],{queryParams:{sts:e.status,test_id:JSON.stringify(e.test_name),"docter_id":e.docter_id,"docter_name":e.docter_name,"lab_name":localStorage.getItem('name'),"_id":e._id}});
+        // }
+        // else{
+        //   this.route.navigate(['/labtestupdate'],{queryParams:{sts:e.status,test_id:JSON.stringify(e.test_name),"docter_id":e.docter_id,"docter_name":e.docter_name,"lab_name":localStorage.getItem('name'),"child_name":e.child_name,"_id":e._id}});
 
-        }
+        // }
 
 console.log()
       }

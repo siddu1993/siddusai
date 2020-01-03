@@ -34,10 +34,14 @@ items: FormArray;
   _id: any;
   sts: any;
   result: any;
+  child_name: any;
+  checks:any=[];
+  ch: any=[];
+  chec: any=[];
 
 
 
-  constructor(public route:Router,private activatedRoute: ActivatedRoute,public nav:NavController,public modalController:ModalController,public auth:AuthService,public formBuilder: FormBuilder) {
+  constructor(public route:Router,private activatedRoute: ActivatedRoute,public nav:NavController,public modalController:ModalController,public auth:AuthService) {
 
     this.activatedRoute.queryParams.subscribe(params => {
       this.test_res = JSON.parse(params['test_id']);
@@ -46,34 +50,33 @@ items: FormArray;
       this.lab_name = params['lab_name'];
       this._id = params['_id'];
       this.sts = params['sts'];
-
-      
-
+      this.child_name = params['child_name'];
 
 
- 
-      
-      console.log("hi test_id", this.sts); // Print the parameter to the console. 
+      console.log("hi this.child_name", this.child_name); // Print the parameter to the console. 
   });
 
 
     this.userData=JSON.parse(localStorage.getItem("userData"));
     this.patient_id=localStorage.getItem("patient_id")
     this.name=localStorage.getItem("full_name")
-
-    
-    this.readings();
-
+    //this.readings();
+    for(let i=0;i<this.test_res;i++)
+    {
+     this.chec[i]=false;
+    }
    }
 
   ngOnInit() {
+    //console.log(101,this.test_res[1].range);
+
  if(this.sts=="1")
  {
   this.getval(this._id);
  }
    for(let i=0;i<this.test_res;i++)
    {
-
+    this.chec[i]=false;
    
     let group={}    
     this.test_res.forEach(input_template=>{
@@ -120,7 +123,9 @@ items: FormArray;
 this.val=[];
     for(let i=0;i<this.test_res.length;i++)
     {
-this.val.push({"name":this.test_res[i].name,"unit":this.sname[i]+" "+this.unit[i],"method":this.method[i],"range":this.range[i]});
+this.val.push({"name":this.test_res[i].name,"other_method":this.method[i]?this.method[i]:'',
+"unit":this.sname[i]+" "+this.unit[i],
+"method":this.checks[i],"range":this.test_res[i].range?this.test_res[i].range:0});
     }
  
     console.log('orm',JSON.stringify(this.val));
@@ -140,7 +145,7 @@ this.updateval();
   {
      // this.labupdateForm .value.docter_id=this.docter_id;
       this.auth.updateval({data:this.val,"patient_id": localStorage.getItem("patient_id"),"lab_id":localStorage.getItem("lab_id"),"docter_id":localStorage.getItem("docter_id"),
-      "docter_name":this.docter_name,"lab_name":this.lab_name,"_id":this._id}).subscribe(res => {
+      "docter_name":this.docter_name,"lab_name":this.lab_name,"_id":this._id,"child_name":this.child_name}).subscribe(res => {
         
         if (res.status == "success") {
           if (res.response != "") {
@@ -167,7 +172,7 @@ this.updateval();
   {
      // this.labupdateForm .value.docter_id=this.docter_id;
       this.auth.readingsave({data:this.val,"patient_id": localStorage.getItem("patient_id"),"lab_id":localStorage.getItem("lab_id"),"docter_id":localStorage.getItem("docter_id"),
-      "docter_name":this.docter_name,"lab_name":this.lab_name,"_id":this._id}).subscribe(res => {
+      "docter_name":this.docter_name,"lab_name":this.lab_name,"_id":this._id,"child_name":this.child_name}).subscribe(res => {
         
         if (res.status == "success") {
           if (res.response != "") {
@@ -188,10 +193,20 @@ this.updateval();
        );
      }
 
+     check(e,i){
+      console.log(e);
+    if(e=='Other Method')
+    {
+     // this.ch=e.detail.checked;
+      this.chec[i]=true;
+    }
+    else{
+      this.chec[i]=false;
 
-
-
-
+    }
+      
+    
+    }
 
 
 
@@ -278,7 +293,12 @@ let s=[];
 
 
 this.sname[i]=r[0];
-this.method[i]=this.result[i].method;
+this.checks[i]=this.result[i].method;
+if(this.checks[i]=="Other Method"){
+this.chec[i]=true;
+this.method[i]=this.result[i].other_method;
+
+}
 this.range[i]=this.result[i].range;
 
 this.unit[i]=r[1];
@@ -301,28 +321,7 @@ this.unit[i]=r[1];
    }
     
          
-         readings()
-         {
-            // this.labupdateForm .value.docter_id=this.docter_id;
-             this.auth.readings().subscribe(res => {
-               
-               if (res.status == "success") {
-                 if (res.response != "") {
-                this.read=res.response;
-                  // localStorage.setItem("full_name",this.name);
-                  // this.router.navigateByUrl("/patientsearch");
-                 }
-              
-               }
-             },
-                
-          
-                () => {
-                  this.auth.presentToast("server failed, server details not exits ");
-              }
-              );
-            }
-         
+       
             onSubmit()
             {
             }

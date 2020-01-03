@@ -75,7 +75,7 @@
           
                   <ion-item  lines="none" *ngIf="item.status=='1'" >
                     <h6 slot="start">Status</h6>
-                    <h6 slot="end">Compleated</h6>
+                    <h6 slot="end">Completed</h6>
                     <u *ngIf="item.status=='1' && item.lab_id ==lab_id && (item.date| date:'ddMMyyyy') == dateee"  (click)="details(item)"><p>EDIT</p></u>
                   </ion-item>
                   <ion-item  lines="none" *ngIf="item.status!='1'" (click)="details(item)">

@@ -15,11 +15,11 @@ export class AuthService {
   //baseUrl: string = 'http://192.168.1.106:3000';
  // baseUrl: string = 'http://192.168.1.137:3000';
 
-  baseUrl: string = 'http://192.168.1.120:4100';
+ //baseUrl: string = 'http://192.168.1.120:4100';
  //baseUrl: string = 'http://192.168.1.104:3000';
   //baseUrl: string = 'http://18.220.79.100:4100';
  //baseUrl: string = 'http://ec2-18-219-216-51.us-east-2.compute.amazonaws.com';
- // baseUrl: string = 'http://18.221.37.201:4000';  
+  baseUrl: string = 'http://18.206.155.160:4100';  
   addUserData: Subject<any> = new Subject();
   onUserEdit: Subject<any> = new Subject();
   deleteUserData: Subject<any> = new Subject();
@@ -206,7 +206,7 @@ export class AuthService {
 
   lab_tests():Observable<any>
   {
-    return this.http.post(this.baseUrl + '/lab_tests/DataOfTrue',""); 
+    return this.http.post(this.baseUrl + '/test_list/requireList',""); 
   }
   findbytestid(data?):Observable<any>
   {
